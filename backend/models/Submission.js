@@ -17,7 +17,13 @@ const submissionSchema = new mongoose.Schema(
     question: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      refPath: "questionType",
+      refPath: "questionModel",
+    },
+
+    questionModel: {
+      type: String,
+      required: true,
+      enum: ["DSAQuestion", "SQLQuestion"],
     },
 
     language: {

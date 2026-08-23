@@ -15,7 +15,8 @@ const connectDB = require("./config/db");
 const assessmentResultRoutes = require(
   "./routes/assessmentResultRoutes"
 );
-
+const companyRoutes = require("./routes/companyRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 
 dotenv.config();
@@ -51,8 +52,8 @@ app.use(
   "/api/assessment-results",
   assessmentResultRoutes
 );
-
-
+app.use("/api/companies", companyRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 
 // Health check

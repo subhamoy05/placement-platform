@@ -1,16 +1,10 @@
-const UserProgress = require("../models/UserProgress");
+const {
+  updateUserProgress,
+} = require("../services/progressService");
 
 const getMyProgress = async (req, res) => {
   try {
-    let progress = await UserProgress.findOne({
-      user: req.userId,
-    });
-
-    if (!progress) {
-      progress = await UserProgress.create({
-        user: req.userId,
-      });
-    }
+    const progress = await updateUserProgress(req.userId);
 
     return res.status(200).json({
       success: true,

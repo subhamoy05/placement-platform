@@ -1,5 +1,6 @@
 const UserProgress = require("../models/UserProgress");
 const Submission = require("../models/Submission");
+const AssessmentResult = require("../models/AssessmentResult");
 
 const updateUserProgress = async (userId) => {
   try {
@@ -15,47 +16,42 @@ const updateUserProgress = async (userId) => {
 
     const submissions = await Submission.find({
       user: userId,
-    }).lean();
+    }).populate("question");
 
-    // -----------------------------
-    // DSA
-    // -----------------------------
-    const dsaSolvedQuestions = new Set();
+    const dsaSubmissions = submissions.filter(
+      (submission) =>
+        submission.questionType === "DSA"
+    );
 
-    submissions.forEach((submission) => {
-      if (
-        submission.questionType === "DSA" &&
-        submission.status === "accepted" &&
-        submission.question
-      ) {
-        dsaSolvedQuestions.add(
-          submission.question.toString()
-        );
-      }
-    });
+    const sqlSubmissions = submissions.filter(
+      (submission) =>
+        submission.questionType === "SQL"
+    );
 
-    // -----------------------------
-    // SQL
-    // -----------------------------
-    const sqlSolvedQuestions = new Set();
+    const acceptedDSAQuestions = new Set(
+      dsaSubmissions
+        .filter(
+          (submission) =>
+            submission.status === "accepted"
+        )
+        .map((submission) =>
+          submission.question._id.toString()
+        )
+    );
 
-    submissions.forEach((submission) => {
-      if (
-        submission.questionType === "SQL" &&
-        submission.status === "accepted" &&
-        submission.question
-      ) {
-        sqlSolvedQuestions.add(
-          submission.question.toString()
-        );
-      }
-    });
+    const acceptedSQLQuestions = new Set(
+      sqlSubmissions
+        .filter(
+          (submission) =>
+            submission.status === "accepted"
+        )
+        .map((submission) =>
+          submission.question._id.toString()
+        )
+    );
 
-    // -----------------------------
-    // Average Score
-    // -----------------------------
     const allScores = submissions.map(
-      (submission) => submission.score || 0
+      (submission) => submission.score
     );
 
     const averageScore =
@@ -68,31 +64,29 @@ const updateUserProgress = async (userId) => {
           )
         : 0;
 
-    // -----------------------------
-    // Update Progress
-    // -----------------------------
+    const assessmentResults =
+      await AssessmentResult.find({
+        user: userId,
+      });
+
     progress.dsaSolved =
-      dsaSolvedQuestions.size;
+      acceptedDSAQuestions.size;
 
     progress.sqlSolved =
-      sqlSolvedQuestions.size;
+      acceptedSQLQuestions.size;
+
+    progress.assessmentsCompleted =
+      assessmentResults.length;
 
     progress.averageScore = averageScore;
 
     await progress.save();
 
-    console.log("User progress updated:", {
-      userId: userId.toString(),
-      dsaSolved: progress.dsaSolved,
-      sqlSolved: progress.sqlSolved,
-      averageScore: progress.averageScore,
-    });
-
     return progress;
   } catch (error) {
     console.error(
       "Update user progress error:",
-      error
+      error.message
     );
 
     throw error;
