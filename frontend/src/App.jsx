@@ -1,15 +1,11 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
-
+import "./Auth.css";
 import StudentLayout from "./layouts/StudentLayout";
 
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 import StudentDashboard from "./pages/StudentDashboard";
 import DSA from "./pages/DSA";
@@ -29,96 +25,51 @@ import CompanyDetail from "./pages/CompanyDetail";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
+	return (
+		<BrowserRouter>
+			<Routes>
+				{/* Public Routes */}
+				{/* Public Routes */}
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
 
-        {/* Public Routes */}
-        <Route path="/" element={<Home />} />
+				{/* Protected Student Routes */}
+				<Route element={<ProtectedRoute />}>
+					<Route element={<StudentLayout />}>
+						<Route path="/dashboard" element={<StudentDashboard />} />
 
-        <Route path="/login" element={<Login />} />
+						<Route path="/dsa" element={<DSA />} />
 
-        {/* Protected Student Routes */}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<StudentLayout />}>
+						<Route path="/dsa/:id" element={<DSAQuestion />} />
 
-            <Route
-              path="/dashboard"
-              element={<StudentDashboard />}
-            />
+						<Route path="/sql" element={<SQL />} />
 
-            <Route
-              path="/dsa"
-              element={<DSA />}
-            />
+						<Route path="/sql/:id" element={<SQLQuestion />} />
 
-            <Route
-              path="/dsa/:id"
-              element={<DSAQuestion />}
-            />
+						<Route path="/assessments" element={<Assessments />} />
 
-            <Route
-              path="/sql"
-              element={<SQL />}
-            />
+						<Route path="/assessments/:id" element={<AssessmentTest />} />
 
-            <Route
-              path="/sql/:id"
-              element={<SQLQuestion />}
-            />
+						<Route path="/assessments/:id/result" element={<AssessmentResult />} />
 
-            <Route
-              path="/assessments"
-              element={<Assessments />}
-            />
+						<Route path="/interview" element={<Interview />} />
 
-            <Route
-              path="/assessments/:id"
-              element={<AssessmentTest />}
-            />
+						<Route path="/companies" element={<Companies />} />
 
-            <Route
-              path="/assessments/:id/result"
-              element={<AssessmentResult />}
-            />
+						<Route path="/companies/:id" element={<CompanyDetail />} />
 
-            <Route
-              path="/interview"
-              element={<Interview />}
-            />
+						<Route path="/progress" element={<Progress />} />
 
-            <Route
-              path="/companies"
-              element={<Companies />}
-            />
+						<Route path="/profile" element={<Profile />} />
+					</Route>
+				</Route>
 
-            <Route
-              path="/companies/:id"
-              element={<CompanyDetail />}
-            />
-
-            <Route
-              path="/progress"
-              element={<Progress />}
-            />
-
-            <Route
-              path="/profile"
-              element={<Profile />}
-            />
-
-          </Route>
-        </Route>
-
-        {/* Unknown Route */}
-        <Route
-          path="*"
-          element={<Navigate to="/" replace />}
-        />
-
-      </Routes>
-    </BrowserRouter>
-  );
+				{/* Unknown Route */}
+				<Route path="*" element={<Navigate to="/" replace />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

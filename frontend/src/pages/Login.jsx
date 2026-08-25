@@ -9,13 +9,11 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     setError("");
 
     if (!email.trim() || !password) {
@@ -26,28 +24,18 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await api.post(
-        "/auth/login",
-        {
-          email: email.trim(),
-          password,
-        }
-      );
+      const response = await api.post("/auth/login", {
+        email: email.trim(),
+        password,
+      });
 
       const data = response.data;
 
-      const token =
-        data.data?.token ||
-        data.token;
-
-      const user =
-        data.data?.user ||
-        data.user;
+      const token = data.data?.token || data.token;
+      const user = data.data?.user || data.user;
 
       if (!token || !user) {
-        throw new Error(
-          "Invalid login response from server."
-        );
+        throw new Error("Invalid login response from server.");
       }
 
       login(user, token);
@@ -117,6 +105,18 @@ function Login() {
         >
           {loading ? "Logging in..." : "Login"}
         </button>
+
+        {/* New User Registration */}
+        <div className="register-link">
+          <span>Don't have an account?</span>
+
+          <button
+            type="button"
+            onClick={() => navigate("/register")}
+          >
+            Create Account
+          </button>
+        </div>
       </form>
     </div>
   );
