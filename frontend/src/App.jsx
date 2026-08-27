@@ -25,31 +25,34 @@ import AssessmentTest from "./pages/AssessmentTest";
 import AssessmentResult from "./pages/AssessmentResult";
 import CompanyDetail from "./pages/CompanyDetail";
 
-import AdminDashboard from "./pages/admin/AdminDashboard";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminStudents from "./pages/admin/AdminStudents";
-
 import AdminStudentDetails from "./pages/admin/AdminStudentDetails";
-
 import AdminStudentEdit from "./pages/admin/AdminStudentEdit";
 
 import AdminCompanies from "./pages/admin/AdminCompanies";
-
 import AdminCompanyDetails from "./pages/admin/AdminCompanyDetails";
-
 import AdminCompanyCreate from "./pages/admin/AdminCompanyCreate";
-
 import AdminCompanyEdit from "./pages/admin/AdminCompanyEdit";
+
+import AdminAssessments from "./pages/admin/AdminAssessments";
+
+import AdminAssessmentDetails from "./pages/admin/AdminAssessmentDetails";
+
+import AdminAssessmentCreate from "./pages/admin/AdminAssessmentCreate";
+
+import AdminAssessmentEdit from "./pages/admin/AdminAssessmentEdit";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				{/* =================================================
-            PUBLIC ROUTES
-        ================================================= */}
+				{/* =========================================
+                    PUBLIC ROUTES
+                ========================================= */}
 
 				<Route path="/" element={<Home />} />
 
@@ -57,9 +60,9 @@ function App() {
 
 				<Route path="/register" element={<Register />} />
 
-				{/* =================================================
-            STUDENT ROUTES
-        ================================================= */}
+				{/* =========================================
+                    STUDENT ROUTES
+                ========================================= */}
 
 				<Route element={<ProtectedRoute />}>
 					<Route element={<StudentLayout />}>
@@ -91,32 +94,43 @@ function App() {
 					</Route>
 				</Route>
 
-				{/* =================================================
-            ADMIN ROUTES
-        ================================================= */}
+				{/* =========================================
+                    ADMIN ROUTES
+                ========================================= */}
+
 				<Route element={<AdminRoute />}>
 					<Route path="/admin" element={<AdminLayout />}>
+						{/* Dashboard */}
 						<Route index element={<AdminDashboard />} />
-
+						{/* =================================
+                            STUDENTS
+                        ================================= */}
 						<Route path="students" element={<AdminStudents />} />
-
 						<Route path="students/:id/edit" element={<AdminStudentEdit />} />
-
 						<Route path="students/:id" element={<AdminStudentDetails />} />
-
+						{/* =================================
+                            COMPANIES
+                        ================================= */}
 						<Route path="companies" element={<AdminCompanies />} />
-
 						<Route path="companies/create" element={<AdminCompanyCreate />} />
-
 						<Route path="companies/:id/edit" element={<AdminCompanyEdit />} />
-
 						<Route path="companies/:id" element={<AdminCompanyDetails />} />
+						{/* =================================
+                            ASSESSMENTS
+                        ================================= */}
+						<Route path="assessments" element={<AdminAssessments />} />
+
+						<Route path="assessments/create" element={<AdminAssessmentCreate />} />
+
+						<Route path="assessments/:id/edit" element={<AdminAssessmentEdit />} />
+
+						<Route path="assessments/:id" element={<AdminAssessmentDetails />} />
 					</Route>
 				</Route>
 
-				{/* =================================================
-            UNKNOWN ROUTE
-        ================================================= */}
+				{/* =========================================
+                    UNKNOWN ROUTES
+                ========================================= */}
 
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>

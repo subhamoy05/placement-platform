@@ -1,0 +1,383 @@
+/* ================================
+   ADMIN ASSESSMENTS
+================================ */
+
+.admin-assessments {
+	width: 100%;
+}
+
+/* Header */
+
+.admin-assessments-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 28px;
+}
+
+.admin-assessments-header h2 {
+	margin: 10px 0 6px;
+	font-size: 26px;
+	font-weight: 700;
+	color: #172033;
+}
+
+.admin-assessments-header p {
+	margin: 0;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Count */
+
+.assessment-count {
+	min-width: 140px;
+	padding: 14px 20px;
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.assessment-count strong {
+	display: block;
+	font-size: 25px;
+	color: #6366f1;
+}
+
+.assessment-count span {
+	color: #8b95a7;
+	font-size: 11px;
+}
+
+/* Card */
+
+.assessments-card {
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+/* Card Header */
+
+.assessments-card-header {
+	padding: 20px 22px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	border-bottom: 1px solid #edf0f4;
+}
+
+.assessments-card-header h3 {
+	margin: 0;
+	font-size: 16px;
+	color: #172033;
+}
+
+/* Header Actions */
+
+.assessments-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* Search */
+
+.assessment-search {
+	width: 230px;
+	padding: 10px 13px;
+	border: 1px solid #dfe3ea;
+	border-radius: 9px;
+	outline: none;
+	font-size: 12px;
+	color: #172033;
+	background: #fafbfc;
+	transition: 0.2s ease;
+}
+
+.assessment-search:focus {
+	border-color: #6366f1;
+	background: white;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.assessment-search::placeholder {
+	color: #a0a7b4;
+}
+
+/* Add Button */
+
+.assessment-add-btn {
+	border: none;
+	padding: 10px 15px;
+	border-radius: 8px;
+	background: #6366f1;
+	color: white;
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: 0.2s ease;
+}
+
+.assessment-add-btn:hover {
+	background: #4f46e5;
+	transform: translateY(-1px);
+}
+
+/* Table */
+
+.assessments-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.assessments-table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 1050px;
+}
+
+.assessments-table th {
+	padding: 14px 20px;
+	background: #fafbfc;
+	color: #7b8494;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	text-align: left;
+	border-bottom: 1px solid #edf0f4;
+}
+
+.assessments-table td {
+	padding: 15px 20px;
+	border-bottom: 1px solid #f0f1f4;
+	color: #555f70;
+	font-size: 12px;
+}
+
+.assessments-table tbody tr {
+	transition: background 0.15s ease;
+}
+
+.assessments-table tbody tr:hover {
+	background: #fafbff;
+}
+
+.assessments-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+/* Assessment Name */
+
+.assessment-name-cell {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 230px;
+}
+
+.assessment-avatar {
+	width: 35px;
+	height: 35px;
+	flex-shrink: 0;
+	border-radius: 9px;
+	background: linear-gradient(135deg, #6366f1, #8b5cf6);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.assessment-name-cell > div:last-child {
+	min-width: 0;
+}
+
+.assessment-name-cell strong {
+	display: block;
+	color: #273044;
+	font-size: 12px;
+	margin-bottom: 3px;
+}
+
+.assessment-name-cell small {
+	display: block;
+	max-width: 230px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #9ca3af;
+	font-size: 10px;
+}
+
+/* Difficulty */
+
+.assessment-difficulty {
+	display: inline-block;
+	padding: 5px 9px;
+	border-radius: 20px;
+	font-size: 10px;
+	font-weight: 700;
+}
+
+.assessment-difficulty.easy {
+	background: #ecfdf5;
+	color: #047857;
+}
+
+.assessment-difficulty.medium {
+	background: #fffbeb;
+	color: #b45309;
+}
+
+.assessment-difficulty.hard {
+	background: #fff1f2;
+	color: #be123c;
+}
+
+/* View Button */
+
+.assessment-view-btn {
+	border: none;
+	padding: 7px 12px;
+	border-radius: 7px;
+	background: #eef2ff;
+	color: #4f46e5;
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+.assessment-view-btn:hover {
+	background: #e0e7ff;
+}
+
+/* Loading */
+
+.assessments-loading {
+	padding: 60px 20px;
+	text-align: center;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Error */
+
+.assessments-error {
+	margin: 20px;
+	padding: 14px;
+	border-radius: 9px;
+	background: #fff1f2;
+	color: #be123c;
+	text-align: center;
+	font-size: 12px;
+}
+
+/* Empty */
+
+.empty-assessments {
+	padding: 60px 20px !important;
+	text-align: center;
+	color: #9ca3af !important;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+	.admin-assessments-header {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.assessment-count {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.assessments-card-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.assessments-header-actions {
+		width: 100%;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.assessment-search {
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
+
+.assessment-back-btn {
+    border: none;
+    background: transparent;
+    color: #6366f1;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 22px;
+}
+
+.assessment-back-btn:hover {
+    color: #4f46e5;
+}
+
+/* Assessment Actions */
+
+.assessment-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.assessment-view-btn,
+.assessment-edit-btn-small,
+.assessment-delete-btn {
+    border: none;
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.assessment-view-btn {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.assessment-view-btn:hover {
+    background: #e0e7ff;
+}
+
+.assessment-edit-btn-small {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.assessment-edit-btn-small:hover {
+    background: #e5e7eb;
+}
+
+.assessment-delete-btn {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+.assessment-delete-btn:hover {
+    background: #ffe4e6;
+}

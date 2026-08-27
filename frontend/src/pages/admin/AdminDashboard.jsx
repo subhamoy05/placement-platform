@@ -107,9 +107,7 @@ function AdminDashboard() {
 
 					<button onClick={() => navigate("/admin/assessments")}>
 						<span>📝</span>
-
 						<strong>Manage Assessments</strong>
-
 						<small>Create and manage assessments</small>
 					</button>
 

@@ -8,6 +8,8 @@ const { protect, adminOnly } = require("../middleware/authMiddleware");
 
 const { getCompanies, getCompanyById, createCompany, updateCompany, deleteCompany } = require("../controllers/adminCompanyController");
 
+const { getAssessments, getAssessmentById, createAssessment, updateAssessment, deleteAssessment } = require("../controllers/adminAssessmentController");
+
 const router = express.Router();
 
 router.get("/dashboard", protect, adminOnly, getAdminDashboard);
@@ -32,5 +34,17 @@ router.post("/companies", protect, adminOnly, createCompany);
 router.put("/companies/:id", protect, adminOnly, updateCompany);
 
 router.delete("/companies/:id", protect, adminOnly, deleteCompany);
+
+// Assessments
+
+router.get("/assessments", protect, adminOnly, getAssessments);
+
+router.get("/assessments/:id", protect, adminOnly, getAssessmentById);
+
+router.post("/assessments", protect, adminOnly, createAssessment);
+
+router.put("/assessments/:id", protect, adminOnly, updateAssessment);
+
+router.delete("/assessments/:id", protect, adminOnly, deleteAssessment);
 
 module.exports = router;
