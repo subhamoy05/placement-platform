@@ -1,0 +1,543 @@
+/* ==========================================
+   ADMIN QUESTIONS PAGE
+========================================== */
+
+.admin-questions {
+    min-height: 100vh;
+    padding: 32px;
+    background: #f7f8fc;
+    color: #111827;
+}
+
+/* ==========================================
+   BACK BUTTON
+========================================== */
+
+.question-back-btn {
+    border: none;
+    background: transparent;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 0;
+    margin-bottom: 24px;
+    transition: 0.2s ease;
+}
+
+.question-back-btn:hover {
+    color: #111827;
+    transform: translateX(-2px);
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.admin-questions-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.admin-questions-header > div:first-child {
+    min-width: 0;
+}
+
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 8px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.admin-questions-header h2 {
+    margin: 10px 0 6px;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.03em;
+    color: #111827;
+}
+
+.admin-questions-header p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ==========================================
+   COUNT
+========================================== */
+
+.question-count {
+    min-width: 150px;
+    padding: 16px 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+    text-align: right;
+}
+
+.question-count strong {
+    display: block;
+    font-size: 26px;
+    line-height: 1;
+    color: #111827;
+}
+
+.question-count span {
+    display: block;
+    margin-top: 6px;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   MAIN CARD
+========================================== */
+
+.questions-card {
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.05);
+}
+
+/* ==========================================
+   CARD HEADER
+========================================== */
+
+.questions-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.questions-card-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.questions-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+.question-search {
+    width: 240px;
+    height: 40px;
+    padding: 0 13px;
+    border: 1px solid #dfe3ea;
+    border-radius: 9px;
+    outline: none;
+    background: #ffffff;
+    color: #111827;
+    font-size: 13px;
+    transition: 0.2s ease;
+}
+
+.question-search::placeholder {
+    color: #9ca3af;
+}
+
+.question-search:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* ==========================================
+   ADD BUTTON
+========================================== */
+
+.question-add-btn {
+    height: 40px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 9px;
+    background: #111827;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.question-add-btn:hover {
+    background: #1f2937;
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   TABLE WRAPPER
+========================================== */
+
+.questions-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.questions-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+.questions-table thead {
+    background: #fafafa;
+}
+
+.questions-table th {
+    padding: 13px 18px;
+    border-bottom: 1px solid #eef0f4;
+    color: #6b7280;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.questions-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid #f0f1f4;
+    color: #374151;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.questions-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.questions-table tbody tr:hover {
+    background: #fafbff;
+}
+
+.questions-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================
+   QUESTION NAME
+========================================== */
+
+.question-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 280px;
+}
+
+.question-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.question-name-cell > div:last-child {
+    min-width: 0;
+}
+
+.question-name-cell strong {
+    display: block;
+    overflow: hidden;
+    max-width: 260px;
+    color: #111827;
+    font-size: 13px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.question-name-cell small {
+    display: block;
+    overflow: hidden;
+    max-width: 300px;
+    margin-top: 3px;
+    color: #9ca3af;
+    font-size: 11px;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   TOPIC
+========================================== */
+
+.question-topic {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 11px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+/* ==========================================
+   DIFFICULTY
+========================================== */
+
+.question-difficulty {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.question-difficulty.easy {
+    background: #ecfdf3;
+    color: #15803d;
+}
+
+.question-difficulty.medium {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.question-difficulty.hard {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+/* ==========================================
+   COMPANY TAGS
+========================================== */
+
+.question-company-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-width: 190px;
+}
+
+.question-company-tags span {
+    padding: 4px 7px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #4b5563;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.question-company-tags small {
+    color: #9ca3af;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.question-company-tags .no-company {
+    border: none;
+    background: #f9fafb;
+    color: #9ca3af;
+}
+
+/* ==========================================
+   NUMBER CELLS
+========================================== */
+
+.question-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    padding: 0 7px;
+    border-radius: 7px;
+    background: #f8fafc;
+    color: #374151;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ==========================================
+   ACTIONS
+========================================== */
+
+.question-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.question-view-btn,
+.question-edit-btn,
+.question-delete-btn {
+    height: 30px;
+    padding: 0 9px;
+    border: none;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.question-view-btn {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.question-view-btn:hover {
+    background: #e0e7ff;
+}
+
+.question-edit-btn {
+    background: #f3f4f6;
+    color: #4b5563;
+}
+
+.question-edit-btn:hover {
+    background: #e5e7eb;
+}
+
+.question-delete-btn {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+.question-delete-btn:hover {
+    background: #ffe4e6;
+}
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.questions-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: #6b7280;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   ERROR
+========================================== */
+
+.questions-error {
+    margin: 18px 22px;
+    padding: 12px 14px;
+    border: 1px solid #fecdd3;
+    border-radius: 9px;
+    background: #fff1f2;
+    color: #be123c;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ==========================================
+   EMPTY
+========================================== */
+
+.empty-questions {
+    height: 180px;
+    color: #9ca3af !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+    .admin-questions {
+        padding: 22px;
+    }
+
+    .admin-questions-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .question-count {
+        width: 100%;
+        text-align: left;
+    }
+
+    .questions-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .questions-header-actions {
+        width: 100%;
+    }
+
+    .question-search {
+        flex: 1;
+        width: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-questions {
+        padding: 16px;
+    }
+
+    .admin-questions-header h2 {
+        font-size: 24px;
+    }
+
+    .questions-header-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .question-search,
+    .question-add-btn {
+        width: 100%;
+    }
+
+    .questions-card-header {
+        padding: 16px;
+    }
+}

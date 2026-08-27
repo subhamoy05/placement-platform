@@ -10,6 +10,8 @@ const { getCompanies, getCompanyById, createCompany, updateCompany, deleteCompan
 
 const { getAssessments, getAssessmentById, createAssessment, updateAssessment, deleteAssessment } = require("../controllers/adminAssessmentController");
 
+const { getQuestions, getQuestionById, createQuestion, updateQuestion, deleteQuestion } = require("../controllers/adminQuestionController");
+
 const router = express.Router();
 
 router.get("/dashboard", protect, adminOnly, getAdminDashboard);
@@ -46,5 +48,19 @@ router.post("/assessments", protect, adminOnly, createAssessment);
 router.put("/assessments/:id", protect, adminOnly, updateAssessment);
 
 router.delete("/assessments/:id", protect, adminOnly, deleteAssessment);
+
+// ==========================================
+// DSA QUESTIONS
+// ==========================================
+
+router.get("/questions", protect, adminOnly, getQuestions);
+
+router.get("/questions/:id", protect, adminOnly, getQuestionById);
+
+router.post("/questions", protect, adminOnly, createQuestion);
+
+router.put("/questions/:id", protect, adminOnly, updateQuestion);
+
+router.delete("/questions/:id", protect, adminOnly, deleteQuestion);
 
 module.exports = router;
