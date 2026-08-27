@@ -2,11 +2,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 import "./Auth.css";
+
 import StudentLayout from "./layouts/StudentLayout";
+import AdminLayout from "./layouts/AdminLayout";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+
 import StudentDashboard from "./pages/StudentDashboard";
 import DSA from "./pages/DSA";
 import SQL from "./pages/SQL";
@@ -22,19 +25,42 @@ import AssessmentTest from "./pages/AssessmentTest";
 import AssessmentResult from "./pages/AssessmentResult";
 import CompanyDetail from "./pages/CompanyDetail";
 
+import AdminDashboard from "./pages/admin/AdminDashboard";
+
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminRoute from "./components/AdminRoute";
+import AdminStudents from "./pages/admin/AdminStudents";
+
+import AdminStudentDetails from "./pages/admin/AdminStudentDetails";
+
+import AdminStudentEdit from "./pages/admin/AdminStudentEdit";
+
+import AdminCompanies from "./pages/admin/AdminCompanies";
+
+import AdminCompanyDetails from "./pages/admin/AdminCompanyDetails";
+
+import AdminCompanyCreate from "./pages/admin/AdminCompanyCreate";
+
+import AdminCompanyEdit from "./pages/admin/AdminCompanyEdit";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				{/* Public Routes */}
-				{/* Public Routes */}
+				{/* =================================================
+            PUBLIC ROUTES
+        ================================================= */}
+
 				<Route path="/" element={<Home />} />
+
 				<Route path="/login" element={<Login />} />
+
 				<Route path="/register" element={<Register />} />
 
-				{/* Protected Student Routes */}
+				{/* =================================================
+            STUDENT ROUTES
+        ================================================= */}
+
 				<Route element={<ProtectedRoute />}>
 					<Route element={<StudentLayout />}>
 						<Route path="/dashboard" element={<StudentDashboard />} />
@@ -65,7 +91,33 @@ function App() {
 					</Route>
 				</Route>
 
-				{/* Unknown Route */}
+				{/* =================================================
+            ADMIN ROUTES
+        ================================================= */}
+				<Route element={<AdminRoute />}>
+					<Route path="/admin" element={<AdminLayout />}>
+						<Route index element={<AdminDashboard />} />
+
+						<Route path="students" element={<AdminStudents />} />
+
+						<Route path="students/:id/edit" element={<AdminStudentEdit />} />
+
+						<Route path="students/:id" element={<AdminStudentDetails />} />
+
+						<Route path="companies" element={<AdminCompanies />} />
+
+						<Route path="companies/create" element={<AdminCompanyCreate />} />
+
+						<Route path="companies/:id/edit" element={<AdminCompanyEdit />} />
+
+						<Route path="companies/:id" element={<AdminCompanyDetails />} />
+					</Route>
+				</Route>
+
+				{/* =================================================
+            UNKNOWN ROUTE
+        ================================================= */}
+
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</BrowserRouter>

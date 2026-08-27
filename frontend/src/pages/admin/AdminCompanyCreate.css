@@ -1,0 +1,198 @@
+/* ================================
+   ADMIN COMPANY CREATE
+================================ */
+
+.admin-company-create {
+	width: 100%;
+}
+
+/* Back */
+
+.company-create-back {
+	border: none;
+	background: transparent;
+	color: #6366f1;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 0;
+	margin-bottom: 22px;
+}
+
+.company-create-back:hover {
+	color: #4f46e5;
+}
+
+/* Header */
+
+.company-create-header {
+	margin-bottom: 24px;
+}
+
+.company-create-header h2 {
+	margin: 10px 0 6px;
+	color: #172033;
+	font-size: 26px;
+}
+
+.company-create-header p {
+	margin: 0;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Card */
+
+.company-create-card {
+	max-width: 900px;
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 15px;
+	padding: 26px;
+}
+
+/* Grid */
+
+.company-create-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+/* Form Group */
+
+.company-form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.company-form-group.full-width {
+	grid-column: 1 / -1;
+}
+
+.company-form-group label {
+	color: #4b5563;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.company-form-group input,
+.company-form-group select,
+.company-form-group textarea {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 11px 13px;
+	border: 1px solid #dfe3ea;
+	border-radius: 9px;
+	outline: none;
+	color: #172033;
+	background: #fafbfc;
+	font-family: inherit;
+	font-size: 13px;
+	transition: 0.2s ease;
+}
+
+.company-form-group textarea {
+	resize: vertical;
+	min-height: 120px;
+	line-height: 1.5;
+}
+
+.company-form-group input:focus,
+.company-form-group select:focus,
+.company-form-group textarea:focus {
+	border-color: #6366f1;
+	background: white;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.company-form-group input::placeholder,
+.company-form-group textarea::placeholder {
+	color: #a0a7b4;
+}
+
+.company-form-group small {
+	color: #9ca3af;
+	font-size: 10px;
+}
+
+/* Messages */
+
+.company-create-error {
+	margin-bottom: 20px;
+	padding: 12px 14px;
+	border-radius: 9px;
+	background: #fff1f2;
+	color: #be123c;
+	font-size: 12px;
+}
+
+.company-create-success {
+	margin-bottom: 20px;
+	padding: 12px 14px;
+	border-radius: 9px;
+	background: #ecfdf5;
+	color: #047857;
+	font-size: 12px;
+}
+
+/* Actions */
+
+.company-create-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 26px;
+	padding-top: 20px;
+	border-top: 1px solid #edf0f4;
+}
+
+.company-cancel-btn,
+.company-save-btn {
+	border: none;
+	padding: 10px 18px;
+	border-radius: 8px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.company-cancel-btn {
+	background: #f1f3f6;
+	color: #596273;
+}
+
+.company-cancel-btn:hover {
+	background: #e7e9ed;
+}
+
+.company-save-btn {
+	background: #6366f1;
+	color: white;
+}
+
+.company-save-btn:hover {
+	background: #4f46e5;
+}
+
+.company-save-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+	.company-create-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.company-form-group.full-width {
+		grid-column: auto;
+	}
+
+	.company-create-card {
+		padding: 18px;
+	}
+}

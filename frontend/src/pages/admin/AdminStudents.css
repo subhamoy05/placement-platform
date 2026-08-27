@@ -1,0 +1,264 @@
+/* ================================
+   ADMIN STUDENTS PAGE
+================================ */
+
+.admin-students {
+	width: 100%;
+}
+
+/* Header */
+
+.admin-students-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	margin-bottom: 28px;
+}
+
+.admin-students-header h2 {
+	margin: 10px 0 6px;
+	font-size: 26px;
+	font-weight: 700;
+	color: #172033;
+}
+
+.admin-students-header p {
+	margin: 0;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Count */
+
+.student-count {
+	min-width: 130px;
+	padding: 14px 20px;
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 12px;
+	text-align: center;
+}
+
+.student-count strong {
+	display: block;
+	font-size: 25px;
+	color: #4f46e5;
+}
+
+.student-count span {
+	color: #8b95a7;
+	font-size: 11px;
+}
+
+/* Main Card */
+
+.students-card {
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+/* Card Header */
+
+.students-card-header {
+	padding: 20px 22px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	border-bottom: 1px solid #edf0f4;
+}
+
+.students-card-header h3 {
+	margin: 0;
+	font-size: 16px;
+	color: #172033;
+}
+
+/* Search */
+
+.student-search {
+	width: 240px;
+	padding: 10px 13px;
+	border: 1px solid #dfe3ea;
+	border-radius: 9px;
+	outline: none;
+	font-size: 12px;
+	color: #172033;
+	background: #fafbfc;
+	transition: 0.2s ease;
+}
+
+.student-search:focus {
+	border-color: #6366f1;
+	background: white;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.student-search::placeholder {
+	color: #a0a7b4;
+}
+
+/* Table */
+
+.students-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.students-table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 850px;
+}
+
+.students-table th {
+	padding: 14px 20px;
+	background: #fafbfc;
+	color: #7b8494;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.6px;
+	text-align: left;
+	border-bottom: 1px solid #edf0f4;
+}
+
+.students-table td {
+	padding: 15px 20px;
+	border-bottom: 1px solid #f0f1f4;
+	color: #555f70;
+	font-size: 12px;
+}
+
+.students-table tbody tr {
+	transition: background 0.15s ease;
+}
+
+.students-table tbody tr:hover {
+	background: #fafbff;
+}
+
+.students-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+/* Student Name */
+
+.student-name-cell {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-width: 160px;
+}
+
+.student-avatar {
+	width: 35px;
+	height: 35px;
+	flex-shrink: 0;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #6366f1, #8b5cf6);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.student-name-cell strong {
+	color: #273044;
+	font-size: 12px;
+}
+
+/* Loading */
+
+.students-loading {
+	padding: 60px 20px;
+	text-align: center;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Error */
+
+.students-error {
+	margin: 20px;
+	padding: 14px;
+	border-radius: 9px;
+	background: #fff1f2;
+	color: #be123c;
+	text-align: center;
+	font-size: 12px;
+}
+
+/* Empty */
+
+.empty-students {
+	padding: 60px 20px !important;
+	text-align: center;
+	color: #9ca3af !important;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+	.admin-students-header {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 18px;
+	}
+
+	.student-count {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.students-card-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.student-search {
+		width: 100%;
+		box-sizing: border-box;
+	}
+}
+
+/* Student Actions */
+
+.student-action-buttons {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.student-view-btn,
+.student-delete-btn {
+	border: none;
+	padding: 7px 11px;
+	border-radius: 7px;
+	font-size: 11px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+.student-view-btn {
+	background: #eef2ff;
+	color: #4f46e5;
+}
+
+.student-view-btn:hover {
+	background: #e0e7ff;
+}
+
+.student-delete-btn {
+	background: #fff1f2;
+	color: #be123c;
+}
+
+.student-delete-btn:hover {
+	background: #ffe4e6;
+}

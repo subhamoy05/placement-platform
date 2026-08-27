@@ -1,0 +1,188 @@
+const Company = require("../models/Company");
+
+const getCompanies = async (req, res) => {
+	try {
+		const companies = await Company.find().sort({ createdAt: -1 });
+
+		return res.status(200).json({
+			success: true,
+			count: companies.length,
+			data: companies,
+		});
+	} catch (error) {
+		console.error("Get companies error:", error);
+
+		return res.status(500).json({
+			success: false,
+			message: "Failed to fetch companies",
+		});
+	}
+};
+
+const getCompanyById = async (req, res) => {
+	try {
+		const company = await Company.findById(req.params.id);
+
+		if (!company) {
+			return res.status(404).json({
+				success: false,
+				message: "Company not found",
+			});
+		}
+
+		return res.status(200).json({
+			success: true,
+			data: company,
+		});
+	} catch (error) {
+		console.error("Get company error:", error);
+
+		return res.status(500).json({
+			success: false,
+			message: "Failed to fetch company",
+		});
+	}
+};
+
+const createCompany = async (req, res) => {
+	try {
+		const { name, description, eligibility, package: companyPackage, difficulty, rounds, topics, questions } = req.body;
+
+		if (!name || !description || !difficulty) {
+			return res.status(400).json({
+				success: false,
+				message: "Name, description and difficulty are required",
+			});
+		}
+
+		const existingCompany = await Company.findOne({ name });
+
+		if (existingCompany) {
+			return res.status(409).json({
+				success: false,
+				message: "Company already exists",
+			});
+		}
+
+		const company = await Company.create({
+			name,
+			description,
+			eligibility: eligibility || [],
+			package: companyPackage || "",
+			difficulty,
+			rounds: rounds || [],
+			topics: topics || [],
+			questions: questions || [],
+		});
+
+		return res.status(201).json({
+			success: true,
+			message: "Company created successfully",
+			data: company,
+		});
+	} catch (error) {
+		console.error("Create company error:", error);
+
+		return res.status(500).json({
+			success: false,
+			message: "Failed to create company",
+		});
+	}
+};
+
+const updateCompany = async (req, res) => {
+	try {
+		const company = await Company.findById(req.params.id);
+
+		if (!company) {
+			return res.status(404).json({
+				success: false,
+				message: "Company not found",
+			});
+		}
+
+		const { name, description, eligibility, package: companyPackage, difficulty, rounds, topics, questions } = req.body;
+
+		if (name !== undefined) {
+			company.name = name;
+		}
+
+		if (description !== undefined) {
+			company.description = description;
+		}
+
+		if (eligibility !== undefined) {
+			company.eligibility = eligibility;
+		}
+
+		if (companyPackage !== undefined) {
+			company.package = companyPackage;
+		}
+
+		if (difficulty !== undefined) {
+			company.difficulty = difficulty;
+		}
+
+		if (rounds !== undefined) {
+			company.rounds = rounds;
+		}
+
+		if (topics !== undefined) {
+			company.topics = topics;
+		}
+
+		if (questions !== undefined) {
+			company.questions = questions;
+		}
+
+		await company.save();
+
+		return res.status(200).json({
+			success: true,
+			message: "Company updated successfully",
+			data: company,
+		});
+	} catch (error) {
+		console.error("Update company error:", error);
+
+		return res.status(500).json({
+			success: false,
+			message: "Failed to update company",
+		});
+	}
+};
+
+const deleteCompany = async (req, res) => {
+	try {
+		const company = await Company.findById(req.params.id);
+
+		if (!company) {
+			return res.status(404).json({
+				success: false,
+				message: "Company not found",
+			});
+		}
+
+		await Company.findByIdAndDelete(company._id);
+
+		return res.status(200).json({
+			success: true,
+			message: "Company deleted successfully",
+		});
+	} catch (error) {
+		console.error("Delete company error:", error);
+
+		return res.status(500).json({
+			success: false,
+			message: "Failed to delete company",
+		});
+	}
+};
+
+module.exports = {
+	getCompanies,
+	getCompanyById,
+	createCompany,
+	updateCompany,
+	deleteCompany,
+};

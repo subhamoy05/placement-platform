@@ -744,4 +744,222 @@
   .register-link button {
     transition: none;
   }
+}/* =========================================================
+   STUDENT / ADMIN LOGIN SWITCH
+   ========================================================= */
+
+.login-type-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 4px;
+
+  width: 100%;
+
+  padding: 4px;
+
+  margin-bottom: 24px;
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+
+  border-radius: 14px;
+
+  background: rgba(241, 245, 249, 0.85);
+
+  box-sizing: border-box;
+}
+
+.login-type-switch button {
+  width: 100%;
+
+  min-height: 42px;
+
+  padding: 0;
+
+  margin: 0;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.login-type-switch button:hover:not(.active) {
+  color: #334155;
+
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.login-type-switch button.active {
+  background: white;
+
+  color: #4f46e5;
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+.login-type-switch button.active:hover {
+  transform: none;
+}
+
+/* =========================================================
+   ADMIN LOGIN NOTE
+   ========================================================= */
+
+.admin-login-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding: 12px 14px;
+
+  border: 1px solid rgba(99, 102, 241, 0.10);
+
+  border-radius: 13px;
+
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.admin-login-note span {
+  flex-shrink: 0;
+
+  font-size: 15px;
+}
+
+.admin-login-note p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LOGIN TYPE SELECTOR
+   ========================================================= */
+
+.login-type {
+  margin-bottom: 22px;
+}
+
+.login-type-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #334155;
+
+  font-size: 13px;
+
+  font-weight: 750;
+}
+
+.login-type-options {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+.login-type-button {
+  width: 100% !important;
+
+  min-height: 48px !important;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin: 0 !important;
+
+  padding: 10px 14px !important;
+
+  border: 1px solid rgba(15, 23, 42, 0.10) !important;
+
+  border-radius: 14px !important;
+
+  background: rgba(255, 255, 255, 0.72) !important;
+
+  color: #64748b !important;
+
+  font-size: 13px !important;
+
+  font-weight: 750 !important;
+
+  cursor: pointer;
+
+  box-shadow: none !important;
+
+  transform: none !important;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease !important;
+}
+
+.login-type-button:hover {
+  border-color: rgba(99, 102, 241, 0.30) !important;
+
+  background: rgba(248, 250, 255, 0.95) !important;
+
+  color: #4f46e5 !important;
+
+  transform: translateY(-1px) !important;
+}
+
+.login-type-button.active {
+  border-color: rgba(99, 102, 241, 0.50) !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.10),
+      rgba(124, 58, 237, 0.10)
+    ) !important;
+
+  color: #4f46e5 !important;
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.07) !important;
+}
+
+.login-type-button span {
+  font-size: 17px;
+}
+
+@media (max-width: 420px) {
+  .login-type-options {
+    grid-template-columns: 1fr;
+  }
 }

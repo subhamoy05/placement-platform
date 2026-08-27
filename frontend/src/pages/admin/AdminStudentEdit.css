@@ -1,0 +1,172 @@
+/* ================================
+   ADMIN STUDENT EDIT
+================================ */
+
+.admin-student-edit {
+	width: 100%;
+}
+
+/* Header */
+
+.student-edit-header {
+	margin-bottom: 24px;
+}
+
+.student-edit-header h2 {
+	margin: 10px 0 6px;
+	color: #172033;
+	font-size: 26px;
+}
+
+.student-edit-header p {
+	margin: 0;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Card */
+
+.student-edit-card {
+	max-width: 850px;
+	background: white;
+	border: 1px solid #e8ebf0;
+	border-radius: 15px;
+	padding: 26px;
+}
+
+/* Form */
+
+.student-edit-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+.form-group.full-width {
+	grid-column: 1 / -1;
+}
+
+.form-group label {
+	color: #4b5563;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.form-group input {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 11px 13px;
+	border: 1px solid #dfe3ea;
+	border-radius: 9px;
+	outline: none;
+	color: #172033;
+	background: #fafbfc;
+	font-size: 13px;
+	transition: 0.2s ease;
+}
+
+.form-group input:focus {
+	border-color: #6366f1;
+	background: white;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.form-group small {
+	color: #9ca3af;
+	font-size: 10px;
+}
+
+/* Messages */
+
+.student-edit-error {
+	margin-bottom: 20px;
+	padding: 12px 14px;
+	border-radius: 9px;
+	background: #fff1f2;
+	color: #be123c;
+	font-size: 12px;
+}
+
+.student-edit-success {
+	margin-bottom: 20px;
+	padding: 12px 14px;
+	border-radius: 9px;
+	background: #ecfdf5;
+	color: #047857;
+	font-size: 12px;
+}
+
+/* Actions */
+
+.student-edit-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 26px;
+	padding-top: 20px;
+	border-top: 1px solid #edf0f4;
+}
+
+.student-cancel-btn,
+.student-save-btn {
+	border: none;
+	padding: 10px 18px;
+	border-radius: 8px;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.student-cancel-btn {
+	background: #f1f3f6;
+	color: #596273;
+}
+
+.student-cancel-btn:hover {
+	background: #e7e9ed;
+}
+
+.student-save-btn {
+	background: #6366f1;
+	color: white;
+}
+
+.student-save-btn:hover {
+	background: #4f46e5;
+}
+
+.student-save-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Loading */
+
+.student-edit-loading {
+	padding: 60px;
+	text-align: center;
+	color: #7b8494;
+	font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+	.student-edit-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.form-group.full-width {
+		grid-column: auto;
+	}
+
+	.student-edit-card {
+		padding: 18px;
+	}
+}

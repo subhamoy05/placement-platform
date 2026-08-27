@@ -1,0 +1,307 @@
+/* ================================
+   ADMIN COMPANIES PAGE
+================================ */
+
+.admin-companies {
+    width: 100%;
+}
+
+/* Header */
+
+.admin-companies-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+}
+
+.admin-companies-header h2 {
+    margin: 10px 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #172033;
+}
+
+.admin-companies-header p {
+    margin: 0;
+    color: #7b8494;
+    font-size: 13px;
+}
+
+/* Count */
+
+.company-count {
+    min-width: 130px;
+    padding: 14px 20px;
+    background: white;
+    border: 1px solid #e8ebf0;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.company-count strong {
+    display: block;
+    font-size: 25px;
+    color: #6366f1;
+}
+
+.company-count span {
+    color: #8b95a7;
+    font-size: 11px;
+}
+
+/* Card */
+
+.companies-card {
+    background: white;
+    border: 1px solid #e8ebf0;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Card Header */
+
+.companies-card-header {
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.companies-card-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #172033;
+}
+
+/* Search */
+
+.company-search {
+    width: 240px;
+    padding: 10px 13px;
+    border: 1px solid #dfe3ea;
+    border-radius: 9px;
+    outline: none;
+    font-size: 12px;
+    color: #172033;
+    background: #fafbfc;
+    transition: 0.2s ease;
+}
+
+.company-search:focus {
+    border-color: #6366f1;
+    background: white;
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.company-search::placeholder {
+    color: #a0a7b4;
+}
+
+/* Table */
+
+.companies-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.companies-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+}
+
+.companies-table th {
+    padding: 14px 20px;
+    background: #fafbfc;
+    color: #7b8494;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    text-align: left;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.companies-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f1f4;
+    color: #555f70;
+    font-size: 12px;
+}
+
+.companies-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.companies-table tbody tr:hover {
+    background: #fafbff;
+}
+
+.companies-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Company Name */
+
+.company-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+}
+
+.company-avatar {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.company-name-cell strong {
+    color: #273044;
+    font-size: 12px;
+}
+
+/* Description */
+
+.company-description {
+    max-width: 260px;
+    line-height: 1.5;
+    color: #697386;
+}
+
+/* Difficulty */
+
+.company-difficulty {
+    display: inline-block;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.company-difficulty.easy {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.company-difficulty.medium {
+    background: #fffbeb;
+    color: #b45309;
+}
+
+.company-difficulty.hard {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+/* View Button */
+
+.company-view-btn {
+    border: none;
+    padding: 7px 12px;
+    border-radius: 7px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.company-view-btn:hover {
+    background: #e0e7ff;
+}
+
+/* Loading */
+
+.companies-loading {
+    padding: 60px 20px;
+    text-align: center;
+    color: #7b8494;
+    font-size: 13px;
+}
+
+/* Error */
+
+.companies-error {
+    margin: 20px;
+    padding: 14px;
+    border-radius: 9px;
+    background: #fff1f2;
+    color: #be123c;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Empty */
+
+.empty-companies {
+    padding: 60px 20px !important;
+    text-align: center;
+    color: #9ca3af !important;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .admin-companies-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .company-count {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .companies-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .company-search {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Company Actions */
+
+.company-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.company-delete-btn {
+    border: none;
+    padding: 7px 11px;
+    border-radius: 7px;
+    background: #fff1f2;
+    color: #be123c;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.company-delete-btn:hover {
+    background: #ffe4e6;
+}
