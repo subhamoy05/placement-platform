@@ -1,4 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Navigate,
+} from "react-router-dom";
 
 import "./App.css";
 import "./Auth.css";
@@ -87,10 +92,20 @@ import AdminQuestionCreate from "./pages/admin/AdminQuestionCreate";
 import AdminQuestionDetails from "./pages/admin/AdminQuestionDetails";
 import AdminQuestionEdit from "./pages/admin/AdminQuestionEdit";
 
+/* =========================================
+   ADMIN - SQL QUESTIONS
+========================================= */
+
+import AdminSQLQuestions from "./pages/admin/AdminSQLQuestions";
+import AdminSQLQuestionCreate from "./pages/admin/AdminSQLQuestionCreate";
+import AdminSQLQuestionDetails from "./pages/admin/AdminSQLQuestionDetails";
+import AdminSQLQuestionEdit from "./pages/admin/AdminSQLQuestionEdit";
+
 
 function App() {
     return (
         <BrowserRouter>
+
             <Routes>
 
                 {/* =========================================
@@ -322,6 +337,31 @@ function App() {
                             element={<AdminQuestionDetails />}
                         />
 
+
+                        {/* =================================
+                            SQL QUESTIONS
+                        ================================= */}
+
+                        <Route
+                            path="sql-questions"
+                            element={<AdminSQLQuestions />}
+                        />
+
+                        <Route
+                            path="sql-questions/create"
+                            element={<AdminSQLQuestionCreate />}
+                        />
+
+                        <Route
+                            path="sql-questions/:id/edit"
+                            element={<AdminSQLQuestionEdit />}
+                        />
+
+                        <Route
+                            path="sql-questions/:id"
+                            element={<AdminSQLQuestionDetails />}
+                        />
+
                     </Route>
 
                 </Route>
@@ -342,6 +382,7 @@ function App() {
                 />
 
             </Routes>
+
         </BrowserRouter>
     );
 }

@@ -1,0 +1,398 @@
+/* =========================================
+   ADMIN SQL QUESTION CREATE
+========================================= */
+
+.admin-sql-create {
+    min-height: 100vh;
+    padding: 38px 42px;
+    background: #f7f8fc;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.sql-create-back {
+    display: inline-flex;
+    align-items: center;
+
+    border: none;
+    background: transparent;
+
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+
+    padding: 8px 0;
+    margin-bottom: 24px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.sql-create-back:hover {
+    color: #4f46e5;
+    transform: translateX(-2px);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.sql-create-header {
+    margin-bottom: 28px;
+}
+
+.sql-create-header h2 {
+    margin: 12px 0 6px;
+
+    color: #111827;
+
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.sql-create-header p {
+    margin: 0;
+
+    color: #64748b;
+    font-size: 15px;
+}
+
+/* =========================================
+   CARD
+========================================= */
+
+.sql-create-card {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.sql-create-form {
+    padding: 30px;
+}
+
+.sql-form-section {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sql-form-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.sql-form-section h3 {
+    margin: 0 0 20px;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+/* =========================================
+   GRID
+========================================= */
+
+.sql-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.sql-full-width {
+    grid-column: 1 / -1;
+}
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.sql-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.sql-form-group label {
+    margin-bottom: 8px;
+
+    color: #334155;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sql-form-group label span {
+    margin-left: 4px;
+
+    color: #ef4444;
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.sql-form-group input,
+.sql-form-group select,
+.sql-form-group textarea {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #111827;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.sql-form-group input,
+.sql-form-group select {
+    height: 44px;
+}
+
+.sql-form-group textarea {
+    min-height: 110px;
+
+    resize: vertical;
+
+    line-height: 1.55;
+}
+
+.sql-form-group input::placeholder,
+.sql-form-group textarea::placeholder {
+    color: #94a3b8;
+}
+
+.sql-form-group input:focus,
+.sql-form-group select:focus,
+.sql-form-group textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* =========================================
+   CODE INPUT
+========================================= */
+
+.sql-code-input {
+    min-height: 180px !important;
+
+    background: #0f172a !important;
+    color: #e2e8f0 !important;
+
+    border-color: #1e293b !important;
+
+    font-family:
+        "Fira Code",
+        "Cascadia Code",
+        "Consolas",
+        monospace !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.6 !important;
+
+    tab-size: 4;
+}
+
+.sql-code-input::placeholder {
+    color: #64748b !important;
+}
+
+.sql-code-input:focus {
+    border-color: #6366f1 !important;
+
+    box-shadow:
+        0 0 0 3px rgba(99, 102, 241, 0.12) !important;
+}
+
+/* =========================================
+   HELP TEXT
+========================================= */
+
+.sql-form-group small {
+    margin-top: 7px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.sql-create-error {
+    margin: 0 0 22px;
+
+    padding: 13px 15px;
+
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+
+    background: #fef2f2;
+    color: #b91c1c;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.sql-create-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding-top: 24px;
+}
+
+/* =========================================
+   CANCEL BUTTON
+========================================= */
+
+.sql-cancel-btn {
+    height: 44px;
+
+    padding: 0 18px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #475569;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.sql-cancel-btn:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* =========================================
+   SAVE BUTTON
+========================================= */
+
+.sql-save-btn {
+    height: 44px;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: #4f46e5;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.sql-save-btn:hover {
+    background: #4338ca;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(79, 70, 229, 0.2);
+}
+
+.sql-save-btn:disabled,
+.sql-cancel-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+    .admin-sql-create {
+        padding: 28px 24px;
+    }
+
+    .sql-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sql-full-width {
+        grid-column: auto;
+    }
+
+    .sql-create-form {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 550px) {
+    .admin-sql-create {
+        padding: 20px 16px;
+    }
+
+    .sql-create-header h2 {
+        font-size: 24px;
+    }
+
+    .sql-create-form {
+        padding: 18px;
+    }
+
+    .sql-create-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .sql-cancel-btn,
+    .sql-save-btn {
+        width: 100%;
+    }
+}

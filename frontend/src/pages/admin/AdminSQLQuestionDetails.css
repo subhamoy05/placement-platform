@@ -1,0 +1,466 @@
+/* =========================================
+   ADMIN SQL QUESTION DETAILS
+========================================= */
+
+.admin-sql-details {
+    min-height: 100vh;
+    padding: 38px 42px;
+    background: #f7f8fc;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.sql-details-back {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 8px 0;
+    margin-bottom: 24px;
+
+    border: none;
+    background: transparent;
+
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.sql-details-back:hover {
+    color: #4f46e5;
+    transform: translateX(-2px);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.sql-details-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 28px;
+}
+
+.sql-details-header h2 {
+    margin: 12px 0 6px;
+
+    color: #111827;
+
+    font-size: 30px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.sql-details-header p {
+    margin: 0;
+
+    color: #64748b;
+    font-size: 15px;
+}
+
+.sql-details-header-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.sql-details-edit-btn,
+.sql-details-edit-footer {
+    border: none;
+    border-radius: 9px;
+
+    background: #4f46e5;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.sql-details-edit-btn {
+    height: 44px;
+    padding: 0 18px;
+}
+
+.sql-details-edit-btn:hover,
+.sql-details-edit-footer:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.sql-details-card {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+
+    overflow: hidden;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.sql-details-section {
+    padding: 28px 30px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sql-details-section-title {
+    margin-bottom: 20px;
+}
+
+.sql-details-section-title h3 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+/* =========================================
+   INFORMATION GRID
+========================================= */
+
+.sql-details-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.sql-details-info-item {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sql-details-full {
+    grid-column: 1 / -1;
+}
+
+.sql-details-label {
+    color: #64748b;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.sql-details-info-item strong {
+    color: #111827;
+
+    font-size: 16px;
+}
+
+.sql-details-info-item p {
+    margin: 0;
+
+    color: #475569;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+}
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.sql-category-detail {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    background: #eef2ff;
+    color: #4338ca;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================
+   DIFFICULTY
+========================================= */
+
+.sql-question-difficulty {
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 6px 10px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sql-question-difficulty.easy {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.sql-question-difficulty.medium {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.sql-question-difficulty.hard {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* =========================================
+   CODE BLOCK
+========================================= */
+
+.sql-details-code {
+    margin: 0;
+
+    padding: 20px;
+
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+
+    background: #0f172a;
+    color: #e2e8f0;
+
+    font-family:
+        "Fira Code",
+        "Cascadia Code",
+        "Consolas",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.65;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    overflow-x: auto;
+}
+
+.sql-details-code code {
+    font-family: inherit;
+}
+
+.sql-result-code {
+    background: #111827;
+}
+
+/* =========================================
+   COMPANY TAGS
+========================================= */
+
+.sql-details-company-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.sql-details-company-tags span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 7px 11px;
+
+    border-radius: 7px;
+
+    background: #f1f5f9;
+    color: #475569;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sql-no-company-detail {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.sql-details-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    padding: 22px 30px;
+
+    background: #fafafa;
+}
+
+/* =========================================
+   FOOTER BACK
+========================================= */
+
+.sql-details-back-footer {
+    height: 42px;
+
+    padding: 0 17px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #475569;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.sql-details-back-footer:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* =========================================
+   FOOTER EDIT
+========================================= */
+
+.sql-details-edit-footer {
+    height: 42px;
+
+    padding: 0 18px;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.sql-details-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 300px;
+
+    color: #64748b;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.sql-details-error {
+    max-width: 700px;
+    margin: 40px auto;
+
+    padding: 16px 18px;
+
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+
+    background: #fef2f2;
+    color: #b91c1c;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 800px) {
+    .admin-sql-details {
+        padding: 28px 24px;
+    }
+
+    .sql-details-header {
+        flex-direction: column;
+    }
+
+    .sql-details-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sql-details-full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .admin-sql-details {
+        padding: 20px 16px;
+    }
+
+    .sql-details-header h2 {
+        font-size: 24px;
+    }
+
+    .sql-details-section {
+        padding: 22px 18px;
+    }
+
+    .sql-details-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+
+        padding: 18px;
+    }
+
+    .sql-details-back-footer,
+    .sql-details-edit-footer {
+        width: 100%;
+    }
+
+    .sql-details-code {
+        padding: 15px;
+
+        font-size: 12px;
+    }
+}

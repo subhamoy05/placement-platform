@@ -12,6 +12,8 @@ const { getAssessments, getAssessmentById, createAssessment, updateAssessment, d
 
 const { getQuestions, getQuestionById, createQuestion, updateQuestion, deleteQuestion } = require("../controllers/adminQuestionController");
 
+const { getSQLQuestions, getSQLQuestionById, createSQLQuestion, updateSQLQuestion, deleteSQLQuestion } = require("../controllers/adminSQLQuestionController");
+
 const router = express.Router();
 
 router.get("/dashboard", protect, adminOnly, getAdminDashboard);
@@ -62,5 +64,19 @@ router.post("/questions", protect, adminOnly, createQuestion);
 router.put("/questions/:id", protect, adminOnly, updateQuestion);
 
 router.delete("/questions/:id", protect, adminOnly, deleteQuestion);
+
+// ==========================================
+// SQL QUESTIONS
+// ==========================================
+
+router.get("/sql-questions", protect, adminOnly, getSQLQuestions);
+
+router.get("/sql-questions/:id", protect, adminOnly, getSQLQuestionById);
+
+router.post("/sql-questions", protect, adminOnly, createSQLQuestion);
+
+router.put("/sql-questions/:id", protect, adminOnly, updateSQLQuestion);
+
+router.delete("/sql-questions/:id", protect, adminOnly, deleteSQLQuestion);
 
 module.exports = router;

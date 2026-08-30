@@ -1,0 +1,626 @@
+/* =========================================
+   ADMIN SQL QUESTIONS
+========================================= */
+
+.admin-sql-questions {
+	min-height: 100vh;
+	padding: 38px 42px;
+	background: #f7f8fc;
+	box-sizing: border-box;
+}
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.sql-question-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+
+	border: none;
+	background: transparent;
+
+	color: #475569;
+	font-size: 14px;
+	font-weight: 600;
+
+	padding: 8px 0;
+	margin-bottom: 24px;
+
+	cursor: pointer;
+	transition: 0.2s ease;
+}
+
+.sql-question-back:hover {
+	color: #4f46e5;
+	transform: translateX(-2px);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-sql-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+
+	gap: 30px;
+	margin-bottom: 30px;
+}
+
+.admin-sql-header > div:first-child {
+	flex: 1;
+}
+
+.admin-badge {
+	display: inline-flex;
+	align-items: center;
+
+	padding: 7px 14px;
+	border-radius: 8px;
+
+	background: #eef2ff;
+	color: #4f46e5;
+
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 1.2px;
+}
+
+.admin-sql-header h2 {
+	margin: 12px 0 6px;
+
+	color: #111827;
+
+	font-size: 30px;
+	line-height: 1.2;
+	font-weight: 800;
+}
+
+.admin-sql-header p {
+	margin: 0;
+
+	color: #64748b;
+	font-size: 15px;
+}
+
+/* =========================================
+   COUNT
+========================================= */
+
+.sql-question-count {
+	min-width: 155px;
+
+	padding: 18px 22px;
+
+	background: #ffffff;
+	border: 1px solid #e5e7eb;
+	border-radius: 14px;
+
+	text-align: center;
+
+	box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.sql-question-count strong {
+	display: block;
+
+	color: #4f46e5;
+	font-size: 28px;
+	font-weight: 800;
+	line-height: 1;
+}
+
+.sql-question-count span {
+	display: block;
+
+	margin-top: 7px;
+
+	color: #64748b;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.sql-questions-card {
+	overflow: hidden;
+
+	background: #ffffff;
+
+	border: 1px solid #e5e7eb;
+	border-radius: 16px;
+
+	box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.sql-questions-card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	gap: 20px;
+
+	padding: 22px 24px;
+
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.sql-questions-card-header h3 {
+	margin: 0;
+
+	color: #111827;
+
+	font-size: 18px;
+	font-weight: 750;
+}
+
+.sql-question-actions {
+	display: flex;
+	align-items: center;
+
+	gap: 12px;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.sql-question-search {
+	width: 260px;
+	height: 42px;
+
+	padding: 0 14px;
+
+	border: 1px solid #d1d5db;
+	border-radius: 9px;
+
+	background: #ffffff;
+
+	color: #111827;
+	font-size: 14px;
+
+	outline: none;
+
+	transition: 0.2s ease;
+	box-sizing: border-box;
+}
+
+.sql-question-search::placeholder {
+	color: #94a3b8;
+}
+
+.sql-question-search:focus {
+	border-color: #6366f1;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* =========================================
+   ADD BUTTON
+========================================= */
+
+.sql-question-add-btn {
+	height: 42px;
+
+	padding: 0 17px;
+
+	border: none;
+	border-radius: 9px;
+
+	background: #4f46e5;
+	color: #ffffff;
+
+	font-size: 14px;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	transition: 0.2s ease;
+}
+
+.sql-question-add-btn:hover {
+	background: #4338ca;
+	transform: translateY(-1px);
+	box-shadow: 0 5px 12px rgba(79, 70, 229, 0.2);
+}
+
+.sql-question-add-btn:active {
+	transform: translateY(0);
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.sql-question-loading {
+	padding: 60px 20px;
+
+	text-align: center;
+
+	color: #64748b;
+	font-size: 15px;
+}
+
+/* =========================================
+   ERROR
+========================================= */
+
+.sql-question-error {
+	margin: 20px 24px;
+	padding: 14px 16px;
+
+	border: 1px solid #fecaca;
+	border-radius: 9px;
+
+	background: #fef2f2;
+	color: #b91c1c;
+
+	font-size: 14px;
+	font-weight: 600;
+}
+
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
+.sql-question-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.sql-question-table {
+	width: 100%;
+	min-width: 950px;
+
+	border-collapse: collapse;
+}
+
+.sql-question-table thead {
+	background: #f8fafc;
+}
+
+.sql-question-table th {
+	padding: 14px 20px;
+
+	border-bottom: 1px solid #e5e7eb;
+
+	color: #64748b;
+
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.7px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.sql-question-table td {
+	padding: 17px 20px;
+
+	border-bottom: 1px solid #eef0f4;
+
+	color: #334155;
+
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.sql-question-table tbody tr {
+	transition: background 0.15s ease;
+}
+
+.sql-question-table tbody tr:hover {
+	background: #fafbff;
+}
+
+.sql-question-table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+/* =========================================
+   QUESTION CELL
+========================================= */
+
+.sql-question-name-cell {
+	display: flex;
+	align-items: center;
+
+	gap: 13px;
+
+	min-width: 300px;
+}
+
+.sql-question-avatar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	flex-shrink: 0;
+
+	width: 42px;
+	height: 42px;
+
+	border-radius: 11px;
+
+	background: #eef2ff;
+	color: #4f46e5;
+
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.sql-question-name-cell > div:last-child {
+	min-width: 0;
+}
+
+.sql-question-name-cell strong {
+	display: block;
+
+	max-width: 330px;
+
+	overflow: hidden;
+
+	color: #111827;
+
+	font-size: 14px;
+	font-weight: 700;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.sql-question-name-cell small {
+	display: block;
+
+	max-width: 330px;
+
+	margin-top: 4px;
+
+	overflow: hidden;
+
+	color: #94a3b8;
+
+	font-size: 12px;
+
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* =========================================
+   CATEGORY
+========================================= */
+
+.sql-category {
+	display: inline-flex;
+	align-items: center;
+
+	padding: 6px 10px;
+
+	border-radius: 7px;
+
+	background: #f1f5f9;
+	color: #475569;
+
+	font-size: 12px;
+	font-weight: 700;
+
+	white-space: nowrap;
+}
+
+/* =========================================
+   DIFFICULTY
+========================================= */
+
+.sql-question-difficulty {
+	display: inline-flex;
+	align-items: center;
+
+	padding: 6px 10px;
+
+	border-radius: 7px;
+
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.sql-question-difficulty.easy {
+	background: #ecfdf5;
+	color: #047857;
+}
+
+.sql-question-difficulty.medium {
+	background: #fffbeb;
+	color: #b45309;
+}
+
+.sql-question-difficulty.hard {
+	background: #fef2f2;
+	color: #dc2626;
+}
+
+/* =========================================
+   COMPANY TAGS
+========================================= */
+
+.sql-company-tags {
+	display: flex;
+	flex-wrap: wrap;
+
+	gap: 5px;
+
+	max-width: 190px;
+}
+
+.sql-company-tags span {
+	display: inline-flex;
+
+	padding: 5px 8px;
+
+	border-radius: 6px;
+
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+
+	color: #475569;
+
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.sql-no-company {
+	background: transparent !important;
+	border: none !important;
+
+	padding-left: 0 !important;
+
+	color: #94a3b8 !important;
+}
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.sql-question-action-buttons {
+	display: flex;
+	align-items: center;
+
+	gap: 7px;
+
+	white-space: nowrap;
+}
+
+.sql-question-action-buttons button {
+	height: 32px;
+
+	padding: 0 11px;
+
+	border-radius: 7px;
+
+	font-size: 12px;
+	font-weight: 700;
+
+	cursor: pointer;
+
+	transition: 0.18s ease;
+}
+
+/* View */
+
+.sql-view-btn {
+	border: 1px solid #c7d2fe;
+	background: #eef2ff;
+	color: #4f46e5;
+}
+
+.sql-view-btn:hover {
+	background: #e0e7ff;
+}
+
+/* Edit */
+
+.sql-edit-btn {
+	border: 1px solid #bfdbfe;
+	background: #eff6ff;
+	color: #2563eb;
+}
+
+.sql-edit-btn:hover {
+	background: #dbeafe;
+}
+
+/* Delete */
+
+.sql-delete-btn {
+	border: 1px solid #fecaca;
+	background: #fef2f2;
+	color: #dc2626;
+}
+
+.sql-delete-btn:hover {
+	background: #fee2e2;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-sql-questions {
+	padding: 65px 20px !important;
+
+	color: #94a3b8 !important;
+
+	font-size: 14px !important;
+	text-align: center !important;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+	.admin-sql-questions {
+		padding: 28px 24px;
+	}
+
+	.admin-sql-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.sql-question-count {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.sql-questions-card-header {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.sql-question-actions {
+		width: 100%;
+	}
+
+	.sql-question-search {
+		flex: 1;
+		width: auto;
+	}
+}
+
+@media (max-width: 600px) {
+	.admin-sql-questions {
+		padding: 22px 16px;
+	}
+
+	.admin-sql-header h2 {
+		font-size: 24px;
+	}
+
+	.sql-question-actions {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.sql-question-search {
+		width: 100%;
+	}
+
+	.sql-question-add-btn {
+		width: 100%;
+	}
+
+	.sql-questions-card-header {
+		padding: 18px;
+	}
+}
