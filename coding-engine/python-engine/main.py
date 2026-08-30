@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import subprocess
 import tempfile
 import os
+import sys
 
 app = FastAPI(
     title="Placement Platform Python Engine",
@@ -28,27 +29,94 @@ def health_check():
     }
 
 
+def create_runner(code: str):
+    """
+    Creates a runner that automatically detects:
+    class Solution:
+        def method(...):
+            ...
+    """
+
+    runner = f"""
+{code}
+
+import ast
+import sys
+import inspect
+
+def __run_solution():
+    solution = Solution()
+
+    methods = [
+        name
+        for name, value in inspect.getmembers(
+            solution,
+            predicate=inspect.ismethod
+        )
+        if not name.startswith("_")
+    ]
+
+    if not methods:
+        raise Exception("No solution method found")
+
+    method = getattr(solution, methods[0])
+
+    raw_input = sys.stdin.read().strip()
+
+    if raw_input:
+        try:
+            args = ast.literal_eval("(" + raw_input + ",)")
+        except Exception:
+            raise Exception("Invalid test case input: " + raw_input)
+
+        if not isinstance(args, tuple):
+            args = (args,)
+    else:
+        args = ()
+
+    result = method(*args)
+
+    if result is None and args:
+        result = args[0]
+
+    if isinstance(result, list):
+        print(result)
+    elif isinstance(result, tuple):
+        print(list(result))
+    else:
+        print(result)
+
+
+__run_solution()
+"""
+
+    return runner
+
+
 @app.post("/execute")
 def execute_code(request: CodeRequest):
     results = []
 
     for test_case in request.testCases:
         with tempfile.TemporaryDirectory() as temp_dir:
+
             file_path = os.path.join(
                 temp_dir,
                 "solution.py",
             )
+
+            runner_code = create_runner(request.code)
 
             with open(
                 file_path,
                 "w",
                 encoding="utf-8",
             ) as file:
-                file.write(request.code)
+                file.write(runner_code)
 
             try:
                 process = subprocess.run(
-                    ["python", file_path],
+                    [sys.executable, file_path],
                     input=test_case.input,
                     text=True,
                     capture_output=True,
@@ -75,12 +143,10 @@ def execute_code(request: CodeRequest):
 
                 results.append(
                     {
-                        "passed": actual_output
-                        == expected_output,
+                        "passed": actual_output == expected_output,
                         "status": (
                             "accepted"
-                            if actual_output
-                            == expected_output
+                            if actual_output == expected_output
                             else "wrong_answer"
                         ),
                         "input": test_case.input,
@@ -101,7 +167,9 @@ def execute_code(request: CodeRequest):
                 )
 
     passed = sum(
-        1 for result in results if result["passed"]
+        1
+        for result in results
+        if result["passed"]
     )
 
     total = len(results)
