@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { StudentsIcon, ShieldIcon, SparklesIcon, ArrowRightIcon, EyeIcon, EyeOffIcon } from "../components/Icons";
 
 function Login() {
 	const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Login() {
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState("");
@@ -79,60 +81,99 @@ function Login() {
 	return (
 		<div className="login-page">
 			<form className="login-card" onSubmit={handleSubmit}>
-				<h1>Welcome Back</h1>
-
-				<p>Login to continue your placement preparation.</p>
-
-				{/* Login Type */}
-				<div className="login-type">
-					<span className="login-type-label">Login as</span>
-
-					<div className="login-type-options">
-						<button
-							type="button"
-							className={loginType === "student" ? "login-type-button active" : "login-type-button"}
-							onClick={() => {
-								setLoginType("student");
-								setError("");
-							}}
-						>
-							<span>🎓</span>
-							Student
-						</button>
-
-						<button
-							type="button"
-							className={loginType === "admin" ? "login-type-button active" : "login-type-button"}
-							onClick={() => {
-								setLoginType("admin");
-								setError("");
-							}}
-						>
-							<span>🛡️</span>
-							Admin
-						</button>
+				<div className="login-header">
+					<div className="login-badge">
+						<SparklesIcon size={13} color="#D4FF24" />
+						<span>SECURE ACCESS</span>
 					</div>
+					<h1>Welcome Back</h1>
+					<p>Sign in to continue your placement preparation journey.</p>
+				</div>
+
+				{/* Login Type Tabs */}
+				<div className="role-tabs">
+					<button
+						type="button"
+						className={`role-tab-button ${loginType === "student" ? "active" : ""}`}
+						onClick={() => {
+							setLoginType("student");
+							setError("");
+						}}
+					>
+						<span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+							<StudentsIcon size={16} />
+							Student
+						</span>
+					</button>
+
+					<button
+						type="button"
+						className={`role-tab-button ${loginType === "admin" ? "active" : ""}`}
+						onClick={() => {
+							setLoginType("admin");
+							setError("");
+						}}
+					>
+						<span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+							<ShieldIcon size={16} />
+							Admin
+						</span>
+					</button>
 				</div>
 
 				{error && <div className="login-error">{error}</div>}
 
-				<label>Email</label>
+				<div className="form-group">
+					<label htmlFor="login-email">Email Address</label>
+					<input
+						id="login-email"
+						className="login-input"
+						type="email"
+						value={email}
+						onChange={(event) => setEmail(event.target.value)}
+						placeholder="name@placement.edu"
+						autoComplete="email"
+					/>
+				</div>
 
-				<input type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Enter your email" autoComplete="email" />
+				<div className="form-group">
+					<label htmlFor="login-password">Password</label>
+					<div className="password-input-wrapper">
+						<input
+							id="login-password"
+							className="login-input"
+							type={showPassword ? "text" : "password"}
+							value={password}
+							onChange={(event) => setPassword(event.target.value)}
+							placeholder="••••••••••••"
+							autoComplete="current-password"
+						/>
+						<button
+							type="button"
+							className="password-toggle-btn"
+							onClick={() => setShowPassword((prev) => !prev)}
+							aria-label={showPassword ? "Hide password" : "Show password"}
+							title={showPassword ? "Hide password" : "Show password"}
+						>
+							{showPassword ? <EyeOffIcon size={19} /> : <EyeIcon size={19} />}
+						</button>
+					</div>
+				</div>
 
-				<label>Password</label>
-
-				<input type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Enter your password" autoComplete="current-password" />
-
-				<button type="submit" disabled={loading}>
-					{loading ? "Logging in..." : `Login as ${loginType === "admin" ? "Admin" : "Student"}`}
+				<button type="submit" className="login-submit-button" disabled={loading}>
+					<span>{loading ? "Authenticating..." : `Sign In as ${loginType === "admin" ? "Admin" : "Student"}`}</span>
+					<ArrowRightIcon size={16} />
 				</button>
 
-				{/* Registration */}
-				<div className="register-link">
-					<span>Don't have an account?</span>
-
-					<button type="button" onClick={() => navigate("/register")}>
+				{/* Registration Link */}
+				<div className="login-footer">
+					<span>Don't have an account yet?</span>
+					<button
+						type="button"
+						className="auth-link"
+						style={{ background: "none", border: "none", cursor: "pointer", font: "inherit" }}
+						onClick={() => navigate("/register")}
+					>
 						Create Account
 					</button>
 				</div>

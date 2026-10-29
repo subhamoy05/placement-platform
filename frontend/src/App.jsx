@@ -1,9 +1,4 @@
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
 import "./Auth.css";
@@ -101,290 +96,165 @@ import AdminSQLQuestionCreate from "./pages/admin/AdminSQLQuestionCreate";
 import AdminSQLQuestionDetails from "./pages/admin/AdminSQLQuestionDetails";
 import AdminSQLQuestionEdit from "./pages/admin/AdminSQLQuestionEdit";
 
+/* =========================================
+   ADMIN - MOCK INTERVIEWS
+========================================= */
+
+import AdminMockInterviews from "./pages/admin/AdminMockInterviews";
+import AdminMockInterviewCreate from "./pages/admin/AdminMockInterviewCreate";
 
 function App() {
-    return (
-        <BrowserRouter>
-
-            <Routes>
-
-                {/* =========================================
+	return (
+		<BrowserRouter>
+			<Routes>
+				{/* =========================================
                     PUBLIC ROUTES
                 ========================================= */}
 
-                <Route
-                    path="/"
-                    element={<Home />}
-                />
+				<Route path="/" element={<Home />} />
 
-                <Route
-                    path="/login"
-                    element={<Login />}
-                />
+				<Route path="/login" element={<Login />} />
 
-                <Route
-                    path="/register"
-                    element={<Register />}
-                />
+				<Route path="/register" element={<Register />} />
 
-
-                {/* =========================================
+				{/* =========================================
                     STUDENT ROUTES
                 ========================================= */}
 
-                <Route element={<ProtectedRoute />}>
+				<Route element={<ProtectedRoute />}>
+					<Route element={<StudentLayout />}>
+						{/* Dashboard */}
 
-                    <Route element={<StudentLayout />}>
+						<Route path="/dashboard" element={<StudentDashboard />} />
 
-                        {/* Dashboard */}
+						{/* DSA */}
 
-                        <Route
-                            path="/dashboard"
-                            element={<StudentDashboard />}
-                        />
+						<Route path="/dsa" element={<DSA />} />
 
-                        {/* DSA */}
+						<Route path="/dsa/:id" element={<DSAQuestion />} />
 
-                        <Route
-                            path="/dsa"
-                            element={<DSA />}
-                        />
+						{/* SQL */}
 
-                        <Route
-                            path="/dsa/:id"
-                            element={<DSAQuestion />}
-                        />
+						<Route path="/sql" element={<SQL />} />
 
-                        {/* SQL */}
+						<Route path="/sql/:id" element={<SQLQuestion />} />
 
-                        <Route
-                            path="/sql"
-                            element={<SQL />}
-                        />
+						{/* Assessments */}
 
-                        <Route
-                            path="/sql/:id"
-                            element={<SQLQuestion />}
-                        />
+						<Route path="/assessments" element={<Assessments />} />
 
-                        {/* Assessments */}
+						<Route path="/assessments/:id" element={<AssessmentTest />} />
 
-                        <Route
-                            path="/assessments"
-                            element={<Assessments />}
-                        />
+						<Route path="/assessments/:id/result" element={<AssessmentResult />} />
 
-                        <Route
-                            path="/assessments/:id"
-                            element={<AssessmentTest />}
-                        />
+						{/* Interview */}
 
-                        <Route
-                            path="/assessments/:id/result"
-                            element={<AssessmentResult />}
-                        />
+						<Route path="/interview" element={<Interview />} />
 
-                        {/* Interview */}
+						{/* Companies */}
 
-                        <Route
-                            path="/interview"
-                            element={<Interview />}
-                        />
+						<Route path="/companies" element={<Companies />} />
 
-                        {/* Companies */}
+						<Route path="/companies/:id" element={<CompanyDetail />} />
 
-                        <Route
-                            path="/companies"
-                            element={<Companies />}
-                        />
+						{/* Progress */}
 
-                        <Route
-                            path="/companies/:id"
-                            element={<CompanyDetail />}
-                        />
+						<Route path="/progress" element={<Progress />} />
 
-                        {/* Progress */}
+						{/* Profile */}
 
-                        <Route
-                            path="/progress"
-                            element={<Progress />}
-                        />
+						<Route path="/profile" element={<Profile />} />
+					</Route>
+				</Route>
 
-                        {/* Profile */}
-
-                        <Route
-                            path="/profile"
-                            element={<Profile />}
-                        />
-
-                    </Route>
-
-                </Route>
-
-
-                {/* =========================================
+				{/* =========================================
                     ADMIN ROUTES
                 ========================================= */}
 
-                <Route element={<AdminRoute />}>
-
-                    <Route
-                        path="/admin"
-                        element={<AdminLayout />}
-                    >
-
-                        {/* =================================
+				<Route element={<AdminRoute />}>
+					<Route path="/admin" element={<AdminLayout />}>
+						{/* =================================
                             ADMIN DASHBOARD
                         ================================= */}
 
-                        <Route
-                            index
-                            element={<AdminDashboard />}
-                        />
+						<Route index element={<AdminDashboard />} />
 
-
-                        {/* =================================
+						{/* =================================
                             STUDENTS
                         ================================= */}
 
-                        <Route
-                            path="students"
-                            element={<AdminStudents />}
-                        />
+						<Route path="students" element={<AdminStudents />} />
 
-                        <Route
-                            path="students/:id/edit"
-                            element={<AdminStudentEdit />}
-                        />
+						<Route path="students/:id/edit" element={<AdminStudentEdit />} />
 
-                        <Route
-                            path="students/:id"
-                            element={<AdminStudentDetails />}
-                        />
+						<Route path="students/:id" element={<AdminStudentDetails />} />
 
-
-                        {/* =================================
+						{/* =================================
                             COMPANIES
                         ================================= */}
 
-                        <Route
-                            path="companies"
-                            element={<AdminCompanies />}
-                        />
+						<Route path="companies" element={<AdminCompanies />} />
 
-                        <Route
-                            path="companies/create"
-                            element={<AdminCompanyCreate />}
-                        />
+						<Route path="companies/create" element={<AdminCompanyCreate />} />
 
-                        <Route
-                            path="companies/:id/edit"
-                            element={<AdminCompanyEdit />}
-                        />
+						<Route path="companies/:id/edit" element={<AdminCompanyEdit />} />
 
-                        <Route
-                            path="companies/:id"
-                            element={<AdminCompanyDetails />}
-                        />
+						<Route path="companies/:id" element={<AdminCompanyDetails />} />
 
-
-                        {/* =================================
+						{/* =================================
                             ASSESSMENTS
                         ================================= */}
 
-                        <Route
-                            path="assessments"
-                            element={<AdminAssessments />}
-                        />
+						<Route path="assessments" element={<AdminAssessments />} />
 
-                        <Route
-                            path="assessments/create"
-                            element={<AdminAssessmentCreate />}
-                        />
+						<Route path="assessments/create" element={<AdminAssessmentCreate />} />
 
-                        <Route
-                            path="assessments/:id/edit"
-                            element={<AdminAssessmentEdit />}
-                        />
+						<Route path="assessments/:id/edit" element={<AdminAssessmentEdit />} />
 
-                        <Route
-                            path="assessments/:id"
-                            element={<AdminAssessmentDetails />}
-                        />
+						<Route path="assessments/:id" element={<AdminAssessmentDetails />} />
 
-
-                        {/* =================================
+						{/* =================================
                             DSA QUESTIONS
                         ================================= */}
 
-                        <Route
-                            path="questions"
-                            element={<AdminQuestions />}
-                        />
+						<Route path="questions" element={<AdminQuestions />} />
 
-                        <Route
-                            path="questions/create"
-                            element={<AdminQuestionCreate />}
-                        />
+						<Route path="questions/create" element={<AdminQuestionCreate />} />
 
-                        <Route
-                            path="questions/:id/edit"
-                            element={<AdminQuestionEdit />}
-                        />
+						<Route path="questions/:id/edit" element={<AdminQuestionEdit />} />
 
-                        <Route
-                            path="questions/:id"
-                            element={<AdminQuestionDetails />}
-                        />
+						<Route path="questions/:id" element={<AdminQuestionDetails />} />
 
-
-                        {/* =================================
+						{/* =================================
                             SQL QUESTIONS
                         ================================= */}
 
-                        <Route
-                            path="sql-questions"
-                            element={<AdminSQLQuestions />}
-                        />
+						<Route path="sql-questions" element={<AdminSQLQuestions />} />
 
-                        <Route
-                            path="sql-questions/create"
-                            element={<AdminSQLQuestionCreate />}
-                        />
+						<Route path="sql-questions/create" element={<AdminSQLQuestionCreate />} />
 
-                        <Route
-                            path="sql-questions/:id/edit"
-                            element={<AdminSQLQuestionEdit />}
-                        />
+						<Route path="sql-questions/:id/edit" element={<AdminSQLQuestionEdit />} />
 
-                        <Route
-                            path="sql-questions/:id"
-                            element={<AdminSQLQuestionDetails />}
-                        />
+						<Route path="sql-questions/:id" element={<AdminSQLQuestionDetails />} />
 
-                    </Route>
+						{/* =================================
+                            MOCK INTERVIEWS
+                        ================================= */}
 
-                </Route>
+						<Route path="mock-interviews" element={<AdminMockInterviews />} />
 
+						<Route path="mock-interviews/create" element={<AdminMockInterviewCreate />} />
+					</Route>
+				</Route>
 
-                {/* =========================================
+				{/* =========================================
                     UNKNOWN ROUTES
                 ========================================= */}
 
-                <Route
-                    path="*"
-                    element={
-                        <Navigate
-                            to="/"
-                            replace
-                        />
-                    }
-                />
-
-            </Routes>
-
-        </BrowserRouter>
-    );
+				<Route path="*" element={<Navigate to="/" replace />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;

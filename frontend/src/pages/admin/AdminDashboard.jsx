@@ -4,306 +4,214 @@ import api from "../../services/api";
 import "./AdminDashboard.css";
 
 function AdminDashboard() {
-    const navigate = useNavigate();
+	const navigate = useNavigate();
 
-    const [dashboardData, setDashboardData] = useState(null);
-    const [sqlQuestionCount, setSqlQuestionCount] = useState(0);
-    const [loading, setLoading] = useState(true);
+	const [dashboardData, setDashboardData] = useState(null);
+	const [sqlQuestionCount, setSqlQuestionCount] = useState(0);
+	const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const fetchDashboard = async () => {
-            try {
-                const response = await api.get("/admin/dashboard");
+	// =========================
+	// FETCH ADMIN DASHBOARD
+	// =========================
+	useEffect(() => {
+		const fetchDashboard = async () => {
+			try {
+				const response = await api.get("/admin/dashboard");
 
-                console.log("FULL API RESPONSE:", response);
-                console.log("API DATA:", response.data);
-                console.log("DASHBOARD DATA:", response.data.data);
+				console.log("FULL API RESPONSE:", response);
+				console.log("API DATA:", response.data);
+				console.log("DASHBOARD DATA:", response.data.data);
 
-                setDashboardData(response.data.data || {});
-            } catch (error) {
-                console.error(
-                    "Failed to load admin dashboard:",
-                    error
-                );
+				setDashboardData(response.data.data || {});
+			} catch (error) {
+				console.error("Failed to load admin dashboard:", error);
 
-                setDashboardData({});
-            } finally {
-                setLoading(false);
-            }
-        };
+				setDashboardData({});
+			} finally {
+				setLoading(false);
+			}
+		};
 
-        fetchDashboard();
-    }, []);
+		fetchDashboard();
+	}, []);
 
-    useEffect(() => {
-        const fetchSQLQuestions = async () => {
-            try {
-                const response = await api.get(
-                    "/admin/sql-questions"
-                );
+	// =========================
+	// FETCH SQL QUESTIONS
+	// =========================
+	useEffect(() => {
+		const fetchSQLQuestions = async () => {
+			try {
+				const response = await api.get("/admin/sql-questions");
 
-                console.log(
-                    "SQL QUESTIONS DASHBOARD:",
-                    response.data
-                );
+				console.log("SQL QUESTIONS DASHBOARD:", response.data);
 
-                const data = response.data;
+				const data = response.data;
 
-                if (Array.isArray(data.data)) {
-                    setSqlQuestionCount(data.data.length);
-                } else if (typeof data.count === "number") {
-                    setSqlQuestionCount(data.count);
-                } else {
-                    setSqlQuestionCount(0);
-                }
-            } catch (error) {
-                console.error(
-                    "Failed to load SQL question count:",
-                    error
-                );
+				if (Array.isArray(data.data)) {
+					setSqlQuestionCount(data.data.length);
+				} else if (typeof data.count === "number") {
+					setSqlQuestionCount(data.count);
+				} else {
+					setSqlQuestionCount(0);
+				}
+			} catch (error) {
+				console.error("Failed to load SQL question count:", error);
 
-                setSqlQuestionCount(0);
-            }
-        };
+				setSqlQuestionCount(0);
+			}
+		};
 
-        fetchSQLQuestions();
-    }, []);
+		fetchSQLQuestions();
+	}, []);
 
-    return (
-        <div className="admin-dashboard">
-
-            {/* =========================
+	return (
+		<div className="admin-dashboard">
+			{/* =========================
                 WELCOME SECTION
             ========================== */}
+			<section className="admin-welcome">
+				<span className="admin-badge">ADMINISTRATION</span>
 
-            <section className="admin-welcome">
-                <span className="admin-badge">
-                    ADMINISTRATION
-                </span>
+				<h2>Placement Platform Management</h2>
 
-                <h2>
-                    Placement Platform Management
-                </h2>
+				<p>Manage students, companies, assessments, questions, mock interviews and placement activities from one place.</p>
+			</section>
 
-                <p>
-                    Manage students, companies,
-                    assessments, questions and
-                    placement activities from one place.
-                </p>
-            </section>
-
-            {/* =========================
+			{/* =========================
                 STATISTICS
             ========================== */}
+			<section className="admin-stats">
+				{/* Students */}
+				<div className="admin-stat-card">
+					<span>👨‍🎓</span>
 
-            <section className="admin-stats">
+					<h3>Students</h3>
 
-                {/* Students */}
+					<strong>{loading ? "..." : (dashboardData?.studentCount ?? 0)}</strong>
 
-                <div className="admin-stat-card">
-                    <span>👨‍🎓</span>
+					<p>Registered students</p>
+				</div>
 
-                    <h3>Students</h3>
+				{/* Companies */}
+				<div className="admin-stat-card">
+					<span>🏢</span>
 
-                    <strong>
-                        {loading
-                            ? "..."
-                            : dashboardData?.studentCount ?? 0}
-                    </strong>
+					<h3>Companies</h3>
 
-                    <p>
-                        Registered students
-                    </p>
-                </div>
+					<strong>{loading ? "..." : (dashboardData?.companyCount ?? 0)}</strong>
 
-                {/* Companies */}
+					<p>Available companies</p>
+				</div>
 
-                <div className="admin-stat-card">
-                    <span>🏢</span>
+				{/* Assessments */}
+				<div className="admin-stat-card">
+					<span>📝</span>
 
-                    <h3>Companies</h3>
+					<h3>Assessments</h3>
 
-                    <strong>
-                        {loading
-                            ? "..."
-                            : dashboardData?.companyCount ?? 0}
-                    </strong>
+					<strong>{loading ? "..." : (dashboardData?.assessmentCount ?? 0)}</strong>
 
-                    <p>
-                        Available companies
-                    </p>
-                </div>
+					<p>Available assessments</p>
+				</div>
 
-                {/* Assessments */}
+				{/* DSA Questions */}
+				<div className="admin-stat-card">
+					<span>💻</span>
 
-                <div className="admin-stat-card">
-                    <span>📝</span>
+					<h3>DSA Questions</h3>
 
-                    <h3>Assessments</h3>
+					<strong>{loading ? "..." : (dashboardData?.questionCount ?? 0)}</strong>
 
-                    <strong>
-                        {loading
-                            ? "..."
-                            : dashboardData?.assessmentCount ?? 0}
-                    </strong>
+					<p>DSA practice questions</p>
+				</div>
 
-                    <p>
-                        Available assessments
-                    </p>
-                </div>
+				{/* SQL Questions */}
+				<div className="admin-stat-card">
+					<span>🗄️</span>
 
-                {/* DSA Questions */}
+					<h3>SQL Questions</h3>
 
-                <div className="admin-stat-card">
-                    <span>💻</span>
+					<strong>{sqlQuestionCount}</strong>
 
-                    <h3>DSA Questions</h3>
+					<p>SQL practice questions</p>
+				</div>
 
-                    <strong>
-                        {loading
-                            ? "..."
-                            : dashboardData?.questionCount ?? 0}
-                    </strong>
+				{/* Mock Interviews */}
+				<div className="admin-stat-card">
+					<span>🎤</span>
 
-                    <p>
-                        DSA practice questions
-                    </p>
-                </div>
+					<h3>Mock Interviews</h3>
 
-                {/* SQL Questions */}
+					<strong>{loading ? "..." : (dashboardData?.mockInterviewCount ?? 0)}</strong>
 
-                <div className="admin-stat-card">
-                    <span>🗄️</span>
+					<p>Available mock interviews</p>
+				</div>
+			</section>
 
-                    <h3>SQL Questions</h3>
-
-                    <strong>
-                        {sqlQuestionCount}
-                    </strong>
-
-                    <p>
-                        SQL practice questions
-                    </p>
-                </div>
-
-            </section>
-
-            {/* =========================
+			{/* =========================
                 QUICK MANAGEMENT
             ========================== */}
+			<section className="admin-actions">
+				<h2>Quick Management</h2>
 
-            <section className="admin-actions">
+				<div className="admin-action-grid">
+					{/* Students */}
+					<button type="button" onClick={() => navigate("/admin/students")}>
+						<span>👨‍🎓</span>
 
-                <h2>
-                    Quick Management
-                </h2>
+						<strong>Manage Students</strong>
 
-                <div className="admin-action-grid">
+						<small>View and manage registered students</small>
+					</button>
 
-                    {/* Students */}
+					{/* Companies */}
+					<button type="button" onClick={() => navigate("/admin/companies")}>
+						<span>🏢</span>
 
-                    <button
-                        type="button"
-                        onClick={() =>
-                            navigate("/admin/students")
-                        }
-                    >
-                        <span>👨‍🎓</span>
+						<strong>Manage Companies</strong>
 
-                        <strong>
-                            Manage Students
-                        </strong>
+						<small>Add and manage placement companies</small>
+					</button>
 
-                        <small>
-                            View and manage registered
-                            students
-                        </small>
-                    </button>
+					{/* Assessments */}
+					<button type="button" onClick={() => navigate("/admin/assessments")}>
+						<span>📝</span>
 
-                    {/* Companies */}
+						<strong>Manage Assessments</strong>
 
-                    <button
-                        type="button"
-                        onClick={() =>
-                            navigate("/admin/companies")
-                        }
-                    >
-                        <span>🏢</span>
+						<small>Create and manage assessments</small>
+					</button>
 
-                        <strong>
-                            Manage Companies
-                        </strong>
+					{/* DSA Questions */}
+					<button type="button" onClick={() => navigate("/admin/questions")}>
+						<span>💻</span>
 
-                        <small>
-                            Add and manage placement
-                            companies
-                        </small>
-                    </button>
+						<strong>DSA Questions</strong>
 
-                    {/* Assessments */}
+						<small>Create, edit, and delete DSA questions</small>
+					</button>
 
-                    <button
-                        type="button"
-                        onClick={() =>
-                            navigate("/admin/assessments")
-                        }
-                    >
-                        <span>📝</span>
+					{/* SQL Questions */}
+					<button type="button" onClick={() => navigate("/admin/sql-questions")}>
+						<span>🗄️</span>
 
-                        <strong>
-                            Manage Assessments
-                        </strong>
+						<strong>SQL Questions</strong>
 
-                        <small>
-                            Create and manage
-                            assessments
-                        </small>
-                    </button>
+						<small>Create, edit, and delete SQL questions</small>
+					</button>
 
-                    {/* DSA */}
+					{/* Mock Interviews */}
+					<button type="button" onClick={() => navigate("/admin/mock-interviews")}>
+						<span>🎤</span>
 
-                    <button
-                        type="button"
-                        onClick={() =>
-                            navigate("/admin/questions")
-                        }
-                    >
-                        <span>💻</span>
+						<strong>Manage Mock Interviews</strong>
 
-                        <strong>
-                            DSA Questions
-                        </strong>
-
-                        <small>
-                            Create, edit, and delete
-                            DSA questions
-                        </small>
-                    </button>
-
-                    {/* SQL */}
-
-                    <button
-                        type="button"
-                        onClick={() =>
-                            navigate("/admin/sql-questions")
-                        }
-                    >
-                        <span>🗄️</span>
-
-                        <strong>
-                            SQL Questions
-                        </strong>
-
-                        <small>
-                            Create, edit, and delete
-                            SQL questions
-                        </small>
-                    </button>
-
-                </div>
-            </section>
-        </div>
-    );
+						<small>Create, manage, and conduct mock interviews</small>
+					</button>
+				</div>
+			</section>
+		</div>
+	);
 }
 
 export default AdminDashboard;

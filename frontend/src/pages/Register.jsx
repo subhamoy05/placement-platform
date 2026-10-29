@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import { SparklesIcon, ArrowRightIcon, EyeIcon, EyeOffIcon } from "../components/Icons";
 
 function Register() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function Register() {
     graduationYear: "",
   });
 
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -92,12 +94,18 @@ function Register() {
       <form
         className="login-card"
         onSubmit={handleSubmit}
+        style={{ maxWidth: "520px" }}
       >
-        <h1>Create Account</h1>
-
-        <p>
-          Join the placement preparation platform.
-        </p>
+        <div className="login-header">
+          <div className="login-badge">
+            <SparklesIcon size={13} color="#D4FF24" />
+            <span>JOIN PLACEMENT PREP</span>
+          </div>
+          <h1>Create Account</h1>
+          <p>
+            Start your targeted technical interview preparation today.
+          </p>
+        </div>
 
         {error && (
           <div className="login-error">
@@ -105,84 +113,118 @@ function Register() {
           </div>
         )}
 
-        <label>Full Name</label>
+        <div className="form-group">
+          <label htmlFor="reg-name">Full Name</label>
+          <input
+            id="reg-name"
+            className="login-input"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="e.g. Alex Johnson"
+            autoComplete="name"
+          />
+        </div>
 
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Enter your full name"
-          autoComplete="name"
-        />
+        <div className="form-group">
+          <label htmlFor="reg-email">Email Address</label>
+          <input
+            id="reg-email"
+            className="login-input"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="alex@college.edu"
+            autoComplete="email"
+          />
+        </div>
 
-        <label>Email</label>
+        <div className="form-group">
+          <label htmlFor="reg-password">Password (min. 6 characters)</label>
+          <div className="password-input-wrapper">
+            <input
+              id="reg-password"
+              className="login-input"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="••••••••••••"
+              autoComplete="new-password"
+            />
+            <button
+              type="button"
+              className="password-toggle-btn"
+              onClick={() => setShowPassword((prev) => !prev)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              title={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOffIcon size={19} /> : <EyeIcon size={19} />}
+            </button>
+          </div>
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Enter your email"
-          autoComplete="email"
-        />
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <div className="form-group">
+            <label htmlFor="reg-college">College / University</label>
+            <input
+              id="reg-college"
+              className="login-input"
+              type="text"
+              name="college"
+              value={formData.college}
+              onChange={handleChange}
+              placeholder="e.g. IIT Delhi"
+            />
+          </div>
 
-        <label>Password</label>
+          <div className="form-group">
+            <label htmlFor="reg-branch">Branch / Major</label>
+            <input
+              id="reg-branch"
+              className="login-input"
+              type="text"
+              name="branch"
+              value={formData.branch}
+              onChange={handleChange}
+              placeholder="e.g. CSE / IT"
+            />
+          </div>
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="Create a password"
-          autoComplete="new-password"
-        />
-
-        <label>College</label>
-
-        <input
-          type="text"
-          name="college"
-          value={formData.college}
-          onChange={handleChange}
-          placeholder="Enter your college"
-        />
-
-        <label>Branch</label>
-
-        <input
-          type="text"
-          name="branch"
-          value={formData.branch}
-          onChange={handleChange}
-          placeholder="e.g. Computer Science"
-        />
-
-        <label>Graduation Year</label>
-
-        <input
-          type="number"
-          name="graduationYear"
-          value={formData.graduationYear}
-          onChange={handleChange}
-          placeholder="e.g. 2027"
-        />
+        <div className="form-group">
+          <label htmlFor="reg-year">Graduation Year</label>
+          <input
+            id="reg-year"
+            className="login-input"
+            type="number"
+            name="graduationYear"
+            value={formData.graduationYear}
+            onChange={handleChange}
+            placeholder="e.g. 2027"
+          />
+        </div>
 
         <button
           type="submit"
+          className="login-submit-button"
           disabled={loading}
         >
-          {loading ? "Creating Account..." : "Create Account"}
+          <span>{loading ? "Creating Account..." : "Join Platform"}</span>
+          <ArrowRightIcon size={16} />
         </button>
 
-        <div className="register-link">
+        <div className="login-footer">
           <span>Already have an account?</span>
-
           <button
             type="button"
+            className="auth-link"
+            style={{ background: "none", border: "none", cursor: "pointer", font: "inherit" }}
             onClick={() => navigate("/login")}
           >
-            Login
+            Sign In
           </button>
         </div>
       </form>
