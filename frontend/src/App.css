@@ -432,11 +432,20 @@ textarea:focus {
   font-size: 14px;
   font-weight: 600;
   color: var(--color-slate-500);
-  transition: color 0.2s;
+  transition: all 0.2s;
+  padding: 6px 10px;
+  border-radius: 8px;
 }
 
 .nav-link-item:hover {
   color: var(--brand-lime);
+}
+
+.active-nav-pill {
+  color: var(--brand-lime) !important;
+  background: var(--brand-lime-subtle);
+  border: 1px solid var(--brand-lime-glow);
+  box-shadow: 0 0 12px var(--brand-lime-subtle);
 }
 
 .nav-auth-group {
@@ -2194,3 +2203,5 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 }
+
+

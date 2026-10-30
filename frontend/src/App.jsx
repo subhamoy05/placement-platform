@@ -17,6 +17,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+import AnalyticsBentoDemo from "./components/ui/demo";
 
 /* =========================================
    STUDENT PAGES
@@ -116,6 +117,8 @@ function App() {
 				<Route path="/login" element={<Login />} />
 
 				<Route path="/register" element={<Register />} />
+
+				<Route path="/analytics" element={<AnalyticsBentoDemo />} />
 
 				{/* =========================================
                     STUDENT ROUTES

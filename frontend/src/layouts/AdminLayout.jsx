@@ -19,41 +19,13 @@ function AdminLayout() {
   const { user, logout } = useAuth();
 
   const navItems = [
-    {
-      name: "Dashboard",
-      path: "/admin",
-      icon: <DashboardIcon size={18} />,
-    },
-    {
-      name: "Students",
-      path: "/admin/students",
-      icon: <StudentsIcon size={18} />,
-    },
-    {
-      name: "Companies",
-      path: "/admin/companies",
-      icon: <CompanyIcon size={18} />,
-    },
-    {
-      name: "Assessments",
-      path: "/admin/assessments",
-      icon: <AssessmentIcon size={18} />,
-    },
-    {
-      name: "DSA Questions",
-      path: "/admin/questions",
-      icon: <CodeIcon size={18} />,
-    },
-    {
-      name: "SQL Questions",
-      path: "/admin/sql-questions",
-      icon: <DatabaseIcon size={18} />,
-    },
-    {
-      name: "Mock Interviews",
-      path: "/admin/mock-interviews",
-      icon: <InterviewIcon size={18} />,
-    },
+    { name: "Dashboard", path: "/admin", icon: <DashboardIcon size={18} /> },
+    { name: "Students", path: "/admin/students", icon: <StudentsIcon size={18} /> },
+    { name: "Companies", path: "/admin/companies", icon: <CompanyIcon size={18} /> },
+    { name: "Assessments", path: "/admin/assessments", icon: <AssessmentIcon size={18} /> },
+    { name: "DSA Questions", path: "/admin/questions", icon: <CodeIcon size={18} /> },
+    { name: "SQL Questions", path: "/admin/sql-questions", icon: <DatabaseIcon size={18} /> },
+    { name: "Mock Interviews", path: "/admin/mock-interviews", icon: <InterviewIcon size={18} /> },
   ];
 
   const handleLogout = () => {
@@ -63,13 +35,10 @@ function AdminLayout() {
 
   return (
     <div className="admin-layout">
-      {/* Background Ambient Glows */}
       <div className="admin-ambient-glow admin-glow-1"></div>
       <div className="admin-ambient-glow admin-glow-2"></div>
 
-      {/* ================= SIDEBAR ================= */}
       <aside className="admin-sidebar">
-        {/* Brand */}
         <div className="admin-brand">
           <div className="admin-brand-icon">
             <ShieldIcon size={20} color="#030407" />
@@ -81,10 +50,8 @@ function AdminLayout() {
           </div>
         </div>
 
-        {/* Navigation Title */}
         <div className="admin-nav-title">MANAGEMENT SUITE</div>
 
-        {/* Navigation */}
         <nav className="admin-nav">
           {navItems.map((item) => (
             <NavLink
@@ -102,7 +69,6 @@ function AdminLayout() {
           ))}
         </nav>
 
-        {/* Sidebar Footer */}
         <div className="admin-sidebar-footer">
           <div className="admin-user-card">
             <div className="admin-avatar">
@@ -127,9 +93,7 @@ function AdminLayout() {
         </div>
       </aside>
 
-      {/* ================= MAIN CONTENT ================= */}
       <main className="admin-main">
-        {/* Top Header */}
         <header className="admin-topbar">
           <div className="admin-topbar-badge">
             <SparklesIcon size={14} color="#D4FF24" />

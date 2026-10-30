@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import { TiltCard, ScrollReveal, AnimatedCountUp } from "../components/Effects";
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -107,49 +108,29 @@ const StudentDashboard = () => {
 
       {/* Statistics */}
       <div className="stats-grid">
-
-        <div className="stat-card">
-          <span className="stat-label">
-            DSA Problems
-          </span>
-
-          <strong>{dsaSolved}</strong>
-
+        <TiltCard className="stat-card">
+          <span className="stat-label">DSA Problems</span>
+          <strong><AnimatedCountUp value={dsaSolved} /></strong>
           <small>Problems solved</small>
-        </div>
+        </TiltCard>
 
-        <div className="stat-card">
-          <span className="stat-label">
-            SQL Problems
-          </span>
-
-          <strong>{sqlSolved}</strong>
-
+        <TiltCard className="stat-card">
+          <span className="stat-label">SQL Problems</span>
+          <strong><AnimatedCountUp value={sqlSolved} /></strong>
           <small>Queries solved</small>
-        </div>
+        </TiltCard>
 
-        <div className="stat-card">
-          <span className="stat-label">
-            Assessments
-          </span>
-
-          <strong>
-            {assessmentsCompleted}
-          </strong>
-
+        <TiltCard className="stat-card">
+          <span className="stat-label">Assessments</span>
+          <strong><AnimatedCountUp value={assessmentsCompleted} /></strong>
           <small>Completed</small>
-        </div>
+        </TiltCard>
 
-        <div className="stat-card">
-          <span className="stat-label">
-            Average Score
-          </span>
-
-          <strong>{averageScore}%</strong>
-
+        <TiltCard className="stat-card">
+          <span className="stat-label">Average Score</span>
+          <strong><AnimatedCountUp value={averageScore} suffix="%" /></strong>
           <small>Assessment performance</small>
-        </div>
-
+        </TiltCard>
       </div>
 
       {/* Readiness */}

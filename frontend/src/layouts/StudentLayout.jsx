@@ -36,11 +36,9 @@ function StudentLayout() {
 
   return (
     <div className="student-layout">
-      {/* Background Ambient Glows */}
       <div className="student-ambient-glow student-glow-1"></div>
       <div className="student-ambient-glow student-glow-2"></div>
 
-      {/* Cyber Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-brand-container">
           <div className="sidebar-brand-badge">
@@ -97,9 +95,7 @@ function StudentLayout() {
         </div>
       </aside>
 
-      {/* Main Content Area */}
       <main className="main-content">
-        {/* Top Floating Glass Header */}
         <header className="student-topbar">
           <div className="topbar-left">
             <div className="pro-badge">
